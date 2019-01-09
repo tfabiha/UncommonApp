@@ -33,3 +33,4 @@ Revised Design Doc:
 - changed column name "puzzle_description" in PUZZLES to
   "puzzle_content" to clarify its usage
 - included reasoning for choosing bootstrap
+- gave name "WeLoveHue" to project
