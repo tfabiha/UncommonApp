@@ -1,0 +1,12 @@
+#mainNav {
+    background-color: black;
+}
+
+#footer {
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+    height:20px;
+    text-align: right;
+}
