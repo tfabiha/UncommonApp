@@ -5,7 +5,11 @@ Addison Huang
 Michelle Tang
 pd6
 ---------------------
-<Project Title/Description>
+WeLoveHue
+---------------------
+"WeLoveHue" is a web-based recreation of the ios/android game "I Love Hue". Players are given the chance to solve puzzles
+involving arranging colored blocks to complete a color gradient. They have the abilities to create their own puzzles, play
+the puzzles of other players, and compete for high scores.
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
