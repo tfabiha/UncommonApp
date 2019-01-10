@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-
+<html lang = 'en'>
 <html>
   <head>
+    <meta charset = 'utf-8'/>
     <title>
       TESTING
     </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css">
   </head>
 
   <body>
     {% for color in colors %}
-    <div style = "width:500px;height:100px ; background-color:{{color}} ; padding: 10px"></div> 
+    <div style = "width:100px;height:100px ; background-color:{{color}} ; padding: 10px ; box-sizing: border-box" class = 'box'></div>
+    {% endfor %}
+    <script src="{{ url_for('static', filename="puzzle.js")}}"></script>
   </body>
 </html>

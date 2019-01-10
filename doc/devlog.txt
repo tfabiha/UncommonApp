@@ -38,3 +38,10 @@ Revised Design Doc:
   "puzzle_content" to clarify its usage
 - included reasoning for choosing bootstrap
 - gave name "WeLoveHue" to project
+==============================================================
+dennisC -- 2019-01-07 22:32
+--------------------------------------------------------------
+-created a test page where I was able to swap boxes of color
+around
+-the first box clicked also has a black border as indicator
+of it being selected

@@ -103,3 +103,6 @@ app.secret_key = urandom(32)
 def puzzle():
     colors = ['red','blue','orange']
     return render_template('testpuzzle.html', colors = colors)
+    
+if __name__ == '__main__':
+    app.run(debug=True)
