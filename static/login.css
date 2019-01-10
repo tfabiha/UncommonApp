@@ -1,0 +1,59 @@
+html,
+body {
+  background: #efefef;
+  padding: 10px;
+  font-family: 'Varela Round';
+}
+
+a {
+  color: #aaaaaa;
+}
+a:hover {
+  color: #333333;
+  text-decoration: none;
+}
+/*=== 3. Text Outside the Box ===*/
+.register {
+  color: #919191;
+  padding: 10px 20px;
+}
+
+/*=== 4. Main Form ===*/
+.login-form-1 {
+  max-width: 300px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.login-form-1 .form-control {
+  border: 0;
+  box-shadow: 0 0 0;
+  border-radius: 0;
+  background: transparent;
+  color: #555555;
+  padding: 7px 0;
+  font-weight: bold;
+}
+
+.login-form-1 .form-group {
+  margin-bottom: 0;
+  border-bottom: 2px solid #efefef;
+  padding-right: 20px;
+  position: relative;
+}
+.login-form-1 .form-group:last-child {
+    border-bottom: 0;
+    padding: 5px;
+}
+.login-group {
+  background: #ffffff;
+  color: #999999;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+/*=== 9. Misc ===*/
+.heading {
+  padding: 15px 0;
+  font-size: 25px;
+  color: #aaaaaa;
+  font-weight: bold;
+}
