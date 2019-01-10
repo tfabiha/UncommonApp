@@ -7,8 +7,10 @@ pd6
 ---------------------
 WeLoveHue
 ---------------------
-"WeLoveHue" is a web-based recreation of the ios/android game "I Love Hue". Players are given the chance to solve puzzles
-involving arranging colored blocks to complete a color gradient. They have the abilities to create their own puzzles, play
+"WeLoveHue" is a web-based recreation of the ios/android game
+"I Love Hue". Players are given the chance to solve puzzles
+involving arranging colored blocks to complete a color gradient.
+They have the abilities to create their own puzzles, play
 the puzzles of other players, and compete for high scores.
 
  ______   ______   __   __   __       ______   _______
@@ -39,9 +41,15 @@ Revised Design Doc:
 - included reasoning for choosing bootstrap
 - gave name "WeLoveHue" to project
 ==============================================================
-dennisC -- 2019-01-07 22:32
+dennisC -- 2019-01-09 20:32
 --------------------------------------------------------------
--created a test page where I was able to swap boxes of color
-around
--the first box clicked also has a black border as indicator
-of it being selected
+- created a test page where I was able to swap boxes of color
+  around
+- the first box clicked also has a black border as indicator
+  of it being selected
+==============================================================
+fabihaT -- 2019-01-09 23:35
+--------------------------------------------------------------
+- changed reasoning for FEF choice
+- closed issue
+==============================================================
