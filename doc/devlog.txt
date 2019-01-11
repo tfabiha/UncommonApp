@@ -53,3 +53,17 @@ fabihaT -- 2019-01-09 23:35
 - changed reasoning for FEF choice
 - closed issue
 ==============================================================
+dennisC -- 2019-01-10 22:56
+--------------------------------------------------------------
+- made a puzzle generator, but all the colors are random
+  atm
+- removed spaces between colors
+==============================================================
+fabihaT -- 2019-01-10 23:48
+--------------------------------------------------------------
+- added comments to puzzle.js and app.py
+- fixed formatting issues in puzzle.js, colors.py and app.py
+- added foundation to compare puzzles to solved state in app.py
+  and testpuzzle.html
+- fixed merge conflict
+
