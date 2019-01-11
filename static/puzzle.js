@@ -13,7 +13,7 @@ for (var i = 0; i < sq.length; i++)
 			   })
 };
 
-// will handle swaping two clicked tiles 
+// will handle swaping two clicked tiles
 var swap = function(e)
 {
     // ADD OPTION TO UNCLICK TILES
@@ -24,14 +24,13 @@ var swap = function(e)
     // swap the two tiles
     if (clicked.length == 2)
     {
-	console.log(clicked);
-	var color = clicked[0].style.backgroundColor;
-	
-	clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
-	clicked[1].style.backgroundColor = color;
-	clicked[0].style.border = '0px';
+	     console.log(clicked);
+	     var color = clicked[0].style.backgroundColor;
 
-	clicked = [];
+	     clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
+	     clicked[1].style.backgroundColor = color;
+	     clicked[0].style.border = '0px';
+       clicked = [];
     }
-    
+
 }

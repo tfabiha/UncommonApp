@@ -12,34 +12,34 @@
   </head>
 
   <body>
-    
-    <table style = "cellpadding: 0; 
-		    cellspacing: 0; 
-		    border: 0; 
+
+    <table style = "cellpadding: 0;
+		    cellspacing: 0;
+		    border: 0;
 		    border-collapse: collapse;"
 
 	   class = "{{tile_size}} {{right_change}} {{down_change}}">
-      
+
       {% for row in range( colors|length ) %}
       <tr class = "{{row}}">
-	
-	{% for column in range( colors[row]|length ) %}
-	<td class = "{{column}}">
-	  <div style = "width: 100px;
-			height: 100px; 
-			background-color: rgb({{colors[row][column][0]}},
-			                      {{colors[row][column][1]}},
-					      {{colors[row][column][2]}}); 
-			padding: 10px; 
-			box-sizing: border-box"
-	       
-	       class = "box"></div>
-	</td>
-	{% endfor %}
+
+      	{% for column in range( colors[row]|length ) %}
+      	<td class = "{{column}}" style = "padding: 0; margin: 0;">
+      	  <div style = "width: 100px;
+      			height: 100px;
+      			background-color: rgb({{colors[row][column][0]}},
+      			                      {{colors[row][column][1]}},
+      					                  {{colors[row][column][2]}});
+      			padding: 10px;
+      			box-sizing: border-box"
+
+      	       class = "box"></div>
+      	</td>
+      	{% endfor %}
 
       </tr>
       {% endfor %}
-      
+
     <script src="/static/puzzle.js"></script>
 
   </body>
