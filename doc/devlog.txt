@@ -61,8 +61,8 @@ dennisC -- 2019-01-10 22:56
 ==============================================================
 fabihaT -- 2019-01-10 23:48
 --------------------------------------------------------------
-- added comments to colors.py and app.py
-- fixed formatting issues in colors.py and app.py
+- added comments to puzzle.js and app.py
+- fixed formatting issues in puzzle.js, colors.py and app.py
 - added foundation to compare puzzles to solved state in app.py
   and testpuzzle.html
 - fixed merge conflict
