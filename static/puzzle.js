@@ -26,6 +26,7 @@ var swap = function(e)
     {
 	console.log(clicked);
 	var color = clicked[0].style.backgroundColor;
+	console.log(color.substring(4, color.length-1));
 	
 	clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
 	clicked[1].style.backgroundColor = color;

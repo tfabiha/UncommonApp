@@ -109,10 +109,10 @@ def added():
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
-    puzzle = colors.puzzleGen(5,5)
+    puzzle = colors.puzzleGen(8,8)
     return render_template('testpuzzle.html',
                            colors = puzzle,
-                           tile_size = "5x5", # size "widthxheigth"
+                           tile_size = "8x8", # size "widthxheigth"
                            right_change = "0,0,0", # change in "r,g,b"
                            down_change = "0,0,0") # change in "r,g,b"
 
