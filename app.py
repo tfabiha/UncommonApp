@@ -1,22 +1,27 @@
 from flask import Flask,render_template,request,session,url_for,redirect,flash
+
 from os import urandom
 from util import db_updater as update
 from util import db_search as search
 from util import db_builder as builder
 from static import colors as colors
 from passlib.hash import sha256_crypt
+
 import ssl
 import urllib
 import json
 import random
 
 import sqlite3 #imports sqlite
+
 app = Flask(__name__)
 app.secret_key = urandom(32)
+
 #----------------------------------------------------------home--------------------------------------------------------
 @app.route("/",methods=['GET','POST'])
 def home():
     builder.main()
+
     if 'username' in session: #if user is logged in
         return redirect(url_for('authPage'))
     else:
@@ -47,6 +52,7 @@ def authPage():
         counter = 0
         highScores = []
         userNames = []
+        
         while counter < len(scores):
             highScores.append(scores[counter][0])
             userNames.append(scores[counter][1])
@@ -76,7 +82,9 @@ def reg():
     '''
     if 'username' in session:
         return redirect(url_for('authPage'))
+    
     return render_template('reg.html')
+
 #----------------------------------------------------------database--------------------------------------------------------
 @app.route("/added",methods=['GET','POST'])
 def added():
@@ -102,7 +110,11 @@ def added():
 @app.route('/create',methods = ['GET','POST'])
 def create():
     puzzle = colors.puzzleGen(5,5)
-    return render_template('testpuzzle.html',colors = puzzle)
+    return render_template('testpuzzle.html',
+                           colors = puzzle,
+                           tile_size = "5x5", # size "widthxheigth"
+                           right_change = "0,0,0", # change in "r,g,b"
+                           down_change = "0,0,0") # change in "r,g,b"
 
 if __name__ == '__main__':
     app.run(debug=True)

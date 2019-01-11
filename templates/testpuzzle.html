@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html lang = 'en'>
+
 <html>
+
   <head>
     <meta charset = 'utf-8'/>
     <title>
@@ -9,14 +12,32 @@
   </head>
 
   <body>
-    <table>
-    {% for rows in colors %}
-    <tr>
-      {% for column in rows %}
-        <td><div style = "width:100px;height:100px ; background-color:rgb({{column[0]}},{{column[1]}},{{column[2]}}) ; padding: 10px ; box-sizing: border-box" class = 'box'></div></td>
+    <table class = "{{tile_size}} {{right_change}} {{down_change}}">
+      
+      {% for row in range( colors|length ) %}
+      <tr class = "{{row}}">
+	
+	{% for column in range( colors[row]|length ) %}
+	<td class = "{{column}}">
+	  <div style = "width: 100px;
+			height: 100px; 
+			background-color: rgb({{colors[row][column][0]}},
+			                      {{colors[row][column][1]}},
+					      {{colors[row][column][2]}}); 
+			padding: 10px; 
+			box-sizing: border-box"
+	       
+	       class = "box"></div>
+	</td>
+	{% endfor %}
+
+      </tr>
       {% endfor %}
-    </tr>
-    {% endfor %}
+
+    </table>
+
     <script src="/static/puzzle.js"></script>
+
   </body>
+
 </html>
