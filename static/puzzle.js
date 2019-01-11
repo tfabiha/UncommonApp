@@ -19,7 +19,7 @@ var swap = function(e)
     // ADD OPTION TO UNCLICK TILES
 
     // makes clicked tile visible to the user
-    clicked[0].style.border = '5px solid black'; 
+    clicked[0].style.border = '5px solid white'
 
     // swap the two tiles
     if (clicked.length == 2)
@@ -33,4 +33,5 @@ var swap = function(e)
 
 	clicked = [];
     }
+    
 }
