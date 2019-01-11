@@ -1,5 +1,12 @@
 #mainNav {
-    background-color: black;
+    background: #efefef;
+    font-size: 25px;
+}
+
+body {
+    background: white;
+    padding: 10px;
+    font-family: 'Varela Round';
 }
 
 #footer {
@@ -10,3 +17,9 @@
     height:20px;
     text-align: right;
 }
+
+.navlink {
+    color:#aaaaaa;
+    padding: 5px;
+}
+
