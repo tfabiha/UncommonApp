@@ -52,7 +52,7 @@ def authPage():
         counter = 0
         highScores = []
         userNames = []
-        
+
         while counter < len(scores):
             highScores.append(scores[counter][0])
             userNames.append(scores[counter][1])
@@ -82,7 +82,7 @@ def reg():
     '''
     if 'username' in session:
         return redirect(url_for('authPage'))
-    
+
     return render_template('reg.html')
 
 #----------------------------------------------------------database--------------------------------------------------------
@@ -109,7 +109,8 @@ def added():
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
-    puzzle = colors.puzzleGen(8,8)
+    puzzle = colors.puzzleGen(8, 8, [255,0,0], [0,255,0], [0,0,255], [255,255,255])
+
     return render_template('testpuzzle.html',
                            colors = puzzle,
                            tile_size = "8x8", # size "widthxheigth"

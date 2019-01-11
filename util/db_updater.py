@@ -10,31 +10,36 @@ password is the password of the user
 function adds the username and password to the users database
 '''
 def adduser(username, password):
-    DB_FILE="data/AllDogsGoToHeaven.db"
+    DB_FILE="data/userInfo.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    insert = "INSERT INTO users VALUES(?,?,?)"
-    params=(username,password,0)
+    insert = "INSERT INTO users VALUES(?,?,?,?)"
+    params=(username,password,0,"")
     c.execute(insert,params)
     db.commit()
     db.close()
+
+
+
+    command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
+
 
 '''
 addScore(username,score):
 params:username, score
 username is the username of the user in session
-score is the point value of the question added
+moves is the point value of the question added
 function adds the point value of the question to the users score
 '''
-def addScore(username,score):
-    DB_FILE="data/AllDogsGoToHeaven.db"
+def addMoves(username,score):
+    DB_FILE="data/user.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = "SELECT score FROM users WHERE users.username ='" + username + "';" #selects score of the user
+    command = "SELECT addMoves FROM users WHERE users.username ='" + username + "';" #selects score of the user
     c.execute(command)
     oldScore = c.fetchone()
     newScore = oldScore[0] + score
-    command = "UPDATE users SET score = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
+    command = "UPDATE users SET moves = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
     c.execute(command)
     db.commit()
     db.close()
@@ -57,7 +62,7 @@ answer is api provided answer for the question
 '''
 
 def ansQuestion(username, question):
-    DB_FILE="data/AllDogsGoToHeaven.db"
+    DB_FILE="data/userInfo.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO questions VALUES(?,?)"

@@ -1,14 +1,13 @@
 import random
 
-def puzzleGen(rows,cols):
+def puzzleGen(rows,cols,URC,ULC,LRC,LLC):
     puzzle = []
-    
+
     for r in range(rows):
         puzzle.append([])
-        
+
         for c in range(cols):
             puzzle[r].append([])
-
 
     puzzle[0][0] = [random.randint(0,255),
                     random.randint(0,255),
@@ -58,7 +57,6 @@ def puzzleGen(rows,cols):
 
             if puzzle[r][c] == []:
                 puzzle[r][c] = [0, 0, 0]
-            
             
             
     return puzzle

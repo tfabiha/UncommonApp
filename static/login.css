@@ -1,0 +1,58 @@
+html,
+body {
+  background: #efefef;
+  padding: 10px;
+  font-family: 'Varela Round';
+}
+
+a {
+  color: #aaaaaa;
+}
+a:hover {
+  color: #333333;
+  text-decoration: none;
+}
+
+.register {
+  color: #919191;
+  padding: 10px 20px;
+}
+
+.login {
+  max-width: 300px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.login .formBackground {
+  border: 0;
+  box-shadow: 0 0 0;
+  border-radius: 0;
+  background: transparent;
+  color: #555555;
+  padding: 7px 0;
+  font-weight: bold;
+}
+
+.login .form {
+  margin-bottom: 0;
+  border-bottom: 2px solid #efefef;
+  padding-right: 20px;
+  position: relative;
+}
+.login .form:last-child {
+    border-bottom: 0;
+    padding: 5px;
+}
+.loginBackground {
+  background: #ffffff;
+  color: #999999;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.heading {
+  padding: 15px 0;
+  font-size: 25px;
+  color: #aaaaaa;
+  font-weight: bold;
+}
