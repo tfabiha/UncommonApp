@@ -9,11 +9,11 @@
   </head>
 
   <body>
-    <table>
+    <table style = "cellpadding: 0; cellspacing: 0; border: 0; border-collapse: collapse;">
     {% for rows in colors %}
     <tr>
       {% for column in rows %}
-        <td><div style = "width:100px;height:100px ; background-color:rgb({{column[0]}},{{column[1]}},{{column[2]}}) ; padding: 10px ; box-sizing: border-box" class = 'box'></div></td>
+        <td style = "padding: 0; margin: 0;"><div style = "width:100px;height:100px ; background-color:rgb({{column[0]}},{{column[1]}},{{column[2]}}) ; padding: 10px ; box-sizing: border-box" class = 'box'></div></td>
       {% endfor %}
     </tr>
     {% endfor %}

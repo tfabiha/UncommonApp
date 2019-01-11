@@ -7,7 +7,7 @@ for(var i = 0; i < sq.length;i++){
 })
 };
 var swap = function(e){
-  clicked[0].style.border = '5px solid black'
+  clicked[0].style.border = '5px solid white'
   if(clicked.length == 2){
     console.log(clicked);
     var color = clicked[0].style.backgroundColor;
