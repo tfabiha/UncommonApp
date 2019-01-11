@@ -3,6 +3,7 @@ from os import urandom
 from util import db_updater as update
 from util import db_search as search
 from util import db_builder as builder
+from static import colors as colors
 from passlib.hash import sha256_crypt
 import ssl
 import urllib
@@ -97,11 +98,11 @@ def added():
     except:
         return redirect(url_for('home'))
 
-#----------------------------------------------Test puzzle------------------------------------------------------------------
-@app.route('/test',methods = ['GET','POST'])
-def puzzle():
-    colors = ['red','blue','orange']
-    return render_template('testpuzzle.html', colors = colors)
+#-------------------------------------------create puzzle--------------------------------------------------------
+@app.route('/create',methods = ['GET','POST'])
+def create():
+    puzzle = colors.puzzleGen(5,5)
+    return render_template('testpuzzle.html',colors = puzzle)
 
 if __name__ == '__main__':
     app.run(debug=True)
