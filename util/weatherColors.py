@@ -1,0 +1,53 @@
+import json
+from urllib.request import Request, urlopen
+import urllib.parse
+
+def getLocation():
+    url = 'https://ipapi.co/json'
+    response = urlopen(url)
+    response = response.read()
+    info = json.loads(response)
+    city = info['city']
+    state = info['region']
+    country = info['country']
+    return city,state,country
+def getWeather():
+    location = list(getLocation())
+    try:
+        with open('../keys.json') as f:
+            data = json.load(f)
+    except:
+        pass
+    if location[2] == 'US':
+        location[2] = 'USA'
+    if location[0] == 'Brooklyn' or location[0] == 'Manhattan' or location[0] == 'Queens' or location[0] == 'Bronx' or location[0] == 'Staten Island':
+        location[0] = 'New York'
+    url = 'http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=%s' % (urllib.parse.quote(location[0]),urllib.parse.quote(location[1]),urllib.parse.quote(location[2]),data['weather'])
+    print(url)
+    response = urlopen(url)
+    response = response.read()
+    info = json.loads(response)
+    weather = info['data']['current']['weather']['ic']
+    keyword = ""
+    if weather == '01d' or weather == '02d':
+        keyword = "sun"
+    elif weather == '01n' or weather == '02n':
+        keyword = 'night'
+    elif weather == '03d' or weather == '04d':
+        keyword = 'cloud'
+    else:
+        keyword = 'rain'
+    return keyword
+def makePuzOnWeather():
+    url = "http://www.colourlovers.com/api/colors/?keywords=%s&format=json" % (getWeather())
+    print(url)
+    response = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    response = urlopen(response).read()
+    colors = json.loads(response)
+    fourColors = [colors[0]['rgb'],colors[1]['rgb'],colors[2]['rgb'],colors[3]['rgb']]
+    index = 0
+    for each in fourColors:
+        fourColors[index] = list(each.values())
+        index += 1
+    return fourColors
+makePuzOnWeather()
