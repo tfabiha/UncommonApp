@@ -2,22 +2,43 @@ import random
 import json
 from urllib import request, parse
 
-def getpalette():
+def getpalette(count):
     p_all = []
 
     URL_PALETTE = "http://www.colourlovers.com/api/palettes/random?format=json"
 
-    response = request.urlopen(URL_PALETTE)
+    response = request.Request(URL_PALETTE, headers =
+                               {"User-Agent": "Mozilla/5.0"})
+    response = request.urlopen(response)
     response = response.read()
-    palettes = json.loads(response)
 
-    palettes = palettes[0][colors]
+    palettes = json.loads(response)
+    palettes = palettes[0]
+
+    # print(palettes)
+    palettes = palettes["colors"]
+
+
+    for i in range(count):
+        color = palettes[i]
+
+        URL_COLOR = "http://www.thecolorapi.com/id?hex={}&format=json".format(color)
+
+        response = request.urlopen(URL_COLOR)
+        response = response.read()
+        response = json.loads(response)
+        
+        # print(response)
+        response = response["rgb"]
+
+        data = [response["r"], response["g"], response["b"]]
+        p_all.append( data )
     
-    print(palletes)
-    return palletes
-    
-    
+    # print(palettes)
+    # print(p_all)
     return p_all
+
+# getpalette(4);
 
 def puzzleGen(rows, cols, URC, ULC, LRC, LLC):
     puzzle = []

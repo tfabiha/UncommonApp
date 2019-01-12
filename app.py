@@ -4,7 +4,7 @@ from os import urandom
 from util import db_updater as update
 from util import db_search as search
 from util import db_builder as builder
-from static import colors as colors
+from util import colors
 from passlib.hash import sha256_crypt
 
 import ssl
@@ -109,7 +109,8 @@ def added():
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
-    puzzle = colors.puzzleGen(8, 8, [255,0,0], [0,255,0], [0,0,255], [255,255,255])
+    palette = colors.getpalette(4)
+    puzzle = colors.puzzleGen(8, 8, palette[0], palette[1], palette[2], palette[3])
 
     return render_template('testpuzzle.html',
                            colors = puzzle,
