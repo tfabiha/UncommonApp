@@ -66,4 +66,9 @@ fabihaT -- 2019-01-10 23:48
 - added foundation to compare puzzles to solved state in app.py
   and testpuzzle.html
 - fixed merge conflict
-
+==============================================================
+dennisC -- 2019-01-11 21:20
+--------------------------------------------------------------
+- used ipapi, airvisual, and colourlovers APIs to create a set
+of four colors that are based on the weather of the location
+of the user

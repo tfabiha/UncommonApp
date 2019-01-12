@@ -3,6 +3,9 @@ from urllib.request import Request, urlopen
 import urllib.parse
 
 def getLocation():
+    '''
+    Gets the location of the user using ipapi
+    '''
     url = 'https://ipapi.co/json'
     response = urlopen(url)
     response = response.read()
@@ -12,6 +15,11 @@ def getLocation():
     country = info['country']
     return city,state,country
 def getWeather():
+    '''
+    Gets the weather(not temperature) and time of day where the user lives using
+    the airvisual API. Associates that weather and time of day with a keyword to
+    be used later when generating colors
+    '''
     location = list(getLocation())
     try:
         with open('../keys.json') as f:
@@ -39,6 +47,10 @@ def getWeather():
         keyword = 'rain'
     return keyword
 def makePuzOnWeather():
+    '''
+    Based on keyword from getWeather(), gets colors that relate to that keyword
+    using the colourlovers API
+    '''
     url = "http://www.colourlovers.com/api/colors/?keywords=%s&format=json" % (getWeather())
     print(url)
     response = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -50,4 +62,3 @@ def makePuzOnWeather():
         fourColors[index] = list(each.values())
         index += 1
     return fourColors
-makePuzOnWeather()
