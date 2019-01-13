@@ -56,6 +56,55 @@ def addLog(username,moves,puzzleID):
 
 addLog("hi", 2, 4)
 print("addlog")
+
+# when you complete a puzzle, updates average moves for the player and for the puzzle itself
+def updateAverageMoves(username,moves,puzzleID):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    newMoves= getMovesUser(username) + moves
+    numPlayed = getPuzzlePlayedUser(username) + 1
+    newAverage = newMoves / numPlayed
+    command = "UPDATE usersInfo SET moves = '" + str(newAverage) + "'WHERE users.username = '" + username + "';" #updates moves
+    c.execute(command)
+    db.commit()
+    db.close()
+
+def addMovesUser(username,score):
+    DB_FILE="data/user.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT addMoves FROM usersInfo WHERE users.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    oldScore = c.fetchone()
+    newScore = oldScore[0] + score
+    command = "UPDATE users SET moves = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
+    c.execute(command)
+    db.commit()
+    db.close()
+
+def getMovesUser(username):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT moves FROM usersInfo WHERE usersInfo.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    oldScore = c.fetchone()[0]
+    return(oldScore)
+    #print("THERE ARE THE NUMBER OF PUZZLES COMPLETED")
+    #print(numPuzzlesDone)
+print (getAverageMoves("user"))
+
+def getPuzzlePlayedUser(username):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT puzzleID FROM logs WHERE logs.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    numPuzzlesDone = len(c.fetchall())
+    return(numPuzzlesDone)
+
+    
 '''
 subScore(username,score):
 params:username, score
