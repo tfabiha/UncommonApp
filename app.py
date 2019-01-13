@@ -46,7 +46,7 @@ def authPage():
     '''
     if 'username' in session:
         username = session['username']
-        score = search.score(username)[0]
+        '''score = search.score(username)[0]
         scores = search.highScores()
         counter = 0
         highScores = []
@@ -56,12 +56,13 @@ def authPage():
             highScores.append(scores[counter][0])
             userNames.append(scores[counter][1])
             counter += 1
-            return render_template('home.html', Name = username,Points = score, scores= highScores, names = userNames)
+'''
+        return render_template('home.html', Name = username)
     else:
         try:
-            print('hi')
             username=request.form['username'] #username
             password = search.password(username) #password that matches the username
+            print(password)
             if password == None: #if credentials are incorrect
                 flash('Wrong Username or Password!')
                 return redirect(url_for('home')) #redirects
@@ -140,3 +141,4 @@ def create():
 
 if __name__ == '__main__':
     app.run(debug=True)
+

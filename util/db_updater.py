@@ -18,8 +18,6 @@ def adduser(username, password):
     c.execute(insert,params)
     db.commit()
     db.close()
-adduser("user", "pass")
-print("added user")
 
 def addPuzzle(puzzle_description):
     global puzzle_count
