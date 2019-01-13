@@ -40,7 +40,7 @@ def getpalette(count):
 
 # getpalette(4);
 
-def puzzleGen(rows, cols, URC, ULC, LRC, LLC):
+def puzzleGen(rows, cols, ULC, URC, LLC, LRC):
     puzzle = []
 
     for r in range(rows):

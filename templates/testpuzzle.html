@@ -18,13 +18,13 @@
 		    border: 0;
 		    border-collapse: collapse;"
 
-	   class = "{{tile_size}} {{right_change}} {{down_change}}">
+	   class = "{{tile_size}} {{UL}} {{UR}} {{LL}} {{LR}}">
 
       {% for row in range( colors|length ) %}
-      <tr class = "{{row}}">
-
+      <tr>
+	
       	{% for column in range( colors[row]|length ) %}
-      	<td class = "{{column}}" style = "padding: 0; margin: 0;">
+      	<td style = "padding: 0; margin: 0;">
       	  <div style = "width: 100px;
       			height: 100px;
       			background-color: rgb({{colors[row][column][0]}},
@@ -33,7 +33,7 @@
       			padding: 10px;
       			box-sizing: border-box"
 
-      	       class = "box"></div>
+      	       class = "box row_{{row}} column_{{column}}"></div>
       	</td>
       	{% endfor %}
 

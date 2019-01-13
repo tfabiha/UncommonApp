@@ -109,14 +109,29 @@ def added():
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
+    rows = 8
+    columns = 8
+    
     palette = colors.getpalette(4)
-    puzzle = colors.puzzleGen(8, 8, palette[0], palette[1], palette[2], palette[3])
+    puzzle = colors.puzzleGen(rows, columns,
+                              palette[0], palette[1],
+                              palette[2], palette[3])
 
     return render_template('testpuzzle.html',
                            colors = puzzle,
-                           tile_size = "8x8", # size "widthxheigth"
-                           right_change = "0,0,0", # change in "r,g,b"
-                           down_change = "0,0,0") # change in "r,g,b"
+                           tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                           UL = "{},{},{}".format(palette[0][0],
+                                                  palette[0][1],
+                                                  palette[0][2]), # upper-left color
+                           UR = "{},{},{}".format(palette[1][0],
+                                                  palette[1][1],
+                                                  palette[1][2]), # upper-right color
+                           LL = "{},{},{}".format(palette[2][0],
+                                                  palette[2][1],
+                                                  palette[2][2]), # lower-left color
+                           LR = "{},{},{}".format(palette[3][0],
+                                                  palette[3][1],
+                                                  palette[3][2])) # lower-right color
 
 if __name__ == '__main__':
     app.run(debug=True)
