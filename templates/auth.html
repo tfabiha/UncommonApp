@@ -12,28 +12,37 @@
 <div class="text-center" style="padding:50px 0">
   <div class="heading">{% block heading %}login {% endblock %}</div>
   <div class="login">
-    <form action = "/" method = "POST"> 
+    {% block action %}
+    <form action="/" method = "POST">
+      {% endblock %}
       <div class="loginBackground">
-	<div class="form">
-	  <label for="lg_username" class="sr-only">Username</label>
-	  <input type="text" class="formBackground" id="lg_username" name="username" placeholder="username">
+	<div id="flashedMessages">
+	  {% set msgs = get_flashed_messages() %}
+	  {% for each in msgs %}
+	  <h2>{{each}}<h2>
+	      <br>
+	      {% endfor %}
 	</div>
 	<div class="form">
-	  <label for="lg_password" class="sr-only">Password</label>
-	  <input type="password" class="formBackground" id="lg_password" name="password" placeholder="password">
+	  <input type="text" class="formBackground" name="username" placeholder="username">
 	</div>
+	<div class="form">
+	  <input type="password" class="formBackground" name="password" placeholder="password">
+	</div> 
+	{% block other %}
+	{% endblock %}
 	<div class="form">
 	  <button type="submit"> {% block submit %} Login {% endblock %} </button>
 	  
 	</div>
       </div>
   </div>
+  </form>
   <div class="register">
     {% block text %}
     <p>new user? <a href="/reg">create new account</a></p>
     {% endblock %}
   </div>
-  </form>
 </div>
 {% endblock %}
 

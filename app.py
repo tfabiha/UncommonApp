@@ -93,14 +93,19 @@ def added():
     adds user and password to database if not and sends to home
     '''
     try:
-        newUsername = request.form['username']
-        newPassword = sha256_crypt.encrypt(request.form['password']) #encrypts password
-        userList = search.username(newUsername)
-        if userList == [] : #if username isn't taken
-            update.adduser(newUsername,newPassword) #add to database
-            return redirect(url_for('home'))
-        else: #if username is taken
-            flash('Username Taken')
+        if request.form['password'] == request.form['confirmpassword']:
+            newUsername = request.form['username']
+            newPassword = sha256_crypt.encrypt(request.form['password']) #encrypts password
+            userList = search.username(newUsername)
+            if userList == [] : #if username isn't taken
+                update.adduser(newUsername,newPassword) #add to database
+                flash('Register Successful')
+                return redirect(url_for('home'))
+            else: #if username is taken
+                flash('Username Taken')
+                return redirect(url_for('reg'))
+        else:
+            flash("Passwords don't match")
             return redirect(url_for('reg'))
     except:
         return redirect(url_for('home'))

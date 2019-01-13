@@ -35,7 +35,7 @@ returns an empty list if username doesn't exist in the database
 returns [username] if username exists
 '''
 def username(username):
-    DB_FILE="data/AllDogsGoToHeaven.db"
+    DB_FILE="data/userInfo.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
     user_exists = 'SELECT username FROM users WHERE users.username = (?);'
