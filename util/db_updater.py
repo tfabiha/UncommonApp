@@ -10,7 +10,7 @@ password is the password of the user
 function adds the username and password to the users ../database
 '''
 def adduser(username, password):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO usersInfo VALUES(?,?,?,?)"
@@ -23,7 +23,7 @@ print("added user")
 
 def addPuzzle(puzzle_description):
     global puzzle_count
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO puzzles(puzzle_content,averageMoves) VALUES(?,?)"
@@ -45,7 +45,7 @@ function adds the point value of the question to the users score
 command = "CREATE TABLE logs(username TEXT, moves INTEGER, puzzleID INTEGER)"
 
 def addLog(username,moves,puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "INSERT INTO logs VALUES(?,?,?)"
