@@ -21,7 +21,7 @@ returns the password that matches the username if one exists
 else return none
 '''
 def password(username):
-    DB_FILE="data/AllDogsGoToHeaven.db"
+    DB_FILE="data/userInfo.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor()
     get_password = 'SELECT password FROM users WHERE users.username = (?)'

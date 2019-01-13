@@ -59,6 +59,7 @@ def authPage():
             return render_template('home.html', Name = username,Points = score, scores= highScores, names = userNames)
     else:
         try:
+            print('hi')
             username=request.form['username'] #username
             password = search.password(username) #password that matches the username
             if password == None: #if credentials are incorrect
