@@ -21,7 +21,7 @@ def adduser(username, password):
 
 
 
-    command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
+        command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
 
 
 '''
