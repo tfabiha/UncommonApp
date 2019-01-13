@@ -13,7 +13,7 @@ def puzzleHighScores(puzzleID):
     command = 'SELECT username, moves from logs WHERE logs.puzzleID = (?)'
     c.execute(command, (puzzleID,))
     scores = c.fetchall() #retrieves the scores in descending order
-    print scores
+    print(scores)
     #scores.sort(reverse=True)
     #return scores[0:5]
     return "hi"

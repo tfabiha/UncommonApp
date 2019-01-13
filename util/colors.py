@@ -4,24 +4,36 @@ from urllib import request, parse
 
 def getpalette(count):
     p_all = []
+    num_colors = 0
 
-    URL_PALETTE = "http://www.colourlovers.com/api/palettes/random?format=json"
+    while num_colors < 4:
+        URL_PALETTE = "http://www.colourlovers.com/api/palettes/random?format=json"
 
-    response = request.Request(URL_PALETTE, headers =
+        response = request.Request(URL_PALETTE, headers =
                                {"User-Agent": "Mozilla/5.0"})
-    response = request.urlopen(response)
-    response = response.read()
+        response = request.urlopen(response)
+        response = response.read()
+        
+        palettes = json.loads(response)
+        palettes = palettes[0]
+        
+        # print(palettes)
+        palettes = palettes["colors"]
 
-    palettes = json.loads(response)
-    palettes = palettes[0]
-
-    # print(palettes)
-    palettes = palettes["colors"]
+        num_colors = len(palettes)
 
 
     for i in range(count):
-        color = palettes[i]
+        color = palettes[i] # ffffff
+        
+        response = {}
+        response["r"] = int( color[0:2] , 16 )
+        response["g"] = int( color[2:4] , 16 )
+        response["b"] = int( color[4:6] , 16 )
 
+        print(response)
+        
+        '''
         URL_COLOR = "http://www.thecolorapi.com/id?hex={}&format=json".format(color)
 
         response = request.urlopen(URL_COLOR)
@@ -30,7 +42,8 @@ def getpalette(count):
         
         # print(response)
         response = response["rgb"]
-
+        '''
+        
         data = [response["r"], response["g"], response["b"]]
         p_all.append( data )
     
@@ -75,8 +88,8 @@ def puzzleGen(rows, cols, ULC, URC, LLC, LRC):
     bottom_change = []
 
     for i in range(3):
-        top_change.append( (puzzle[0][cols - 1][i] - puzzle[0][0][i]) / cols )
-        bottom_change.append( (puzzle[rows - 1][cols - 1][i] - puzzle[rows - 1][0][i]) / cols )
+        top_change.append( (puzzle[0][cols - 1][i] - puzzle[0][0][i]) / (cols - 1) )
+        bottom_change.append( (puzzle[rows - 1][cols - 1][i] - puzzle[rows - 1][0][i]) / (cols - 1) )
     
     for c in range(cols):
         if puzzle[0][c] == []:
@@ -87,25 +100,15 @@ def puzzleGen(rows, cols, ULC, URC, LLC, LRC):
             for i in range(3):
                 puzzle[rows - 1][c].append( puzzle[rows - 1][0][i] + bottom_change[i] * c )
 
-    # adad
-    # jknh
     for c in range(cols):
         change = []
 
         for i in range(3):
-            change.append( (puzzle[rows - 1][c][i] - puzzle[0][c][i]) / rows )
+            change.append( (puzzle[rows - 1][c][i] - puzzle[0][c][i]) / (rows - 1) )
 
         for r in range(rows):
             if puzzle[r][c] == []:
                 for i in range(3):
                     puzzle[r][c].append( puzzle[0][c][i] + change[i] * r)
-
-    
-    for r in range(rows):
-        for c in range(cols):
-
-            if puzzle[r][c] == []:
-                puzzle[r][c] = [0, 0, 0]
-            
             
     return puzzle
