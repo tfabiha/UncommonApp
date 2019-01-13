@@ -7,7 +7,7 @@ def users(): #creates the users db
     command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
     c.execute(command)
 
-def questions(): #creates the puzzles db
+def puzzles(): #creates the puzzles db
     DB_FILE="../data/puzzles.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor() #facilitates db operations
@@ -24,9 +24,8 @@ def logs(): #creates the logs db
 def main(): #calls all of the functions to build the databases
     try:
         users()
-        questions()
+        puzzles()
         logs()
-
     except:
         pass
 

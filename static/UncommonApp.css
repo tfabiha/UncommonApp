@@ -1,10 +1,10 @@
 #mainNav {
-    background: #efefef;
+    background: white;
     font-size: 25px;
 }
 
 body {
-    background: white;
+    background: #efefef;
     padding: 10px;
     font-family: 'Varela Round';
 }

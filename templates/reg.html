@@ -1,16 +1,29 @@
 {% extends 'auth.html' %}
 
-{% block head %}<title> Register Page </title>{% endblock %}
-
-
-{% set msgs = get_flashed_messages() %}
-{% for each in msgs %}
-<h2>{{each}}<h2>
-<br>
-{% endfor %}
-{% block heading %}<h3><center>Register for an Account </center></h3>{% endblock %}
-{% block action %}
-<form action = "/added" method="POST">
+{% block head %}
+<link rel="stylesheet" type="text/css" href="../static/login.css">
+<title> Register Page </title>
 {% endblock %}
-{% block register %}
+
+
+{% block heading %}
+register
+{% endblock %}
+
+{% block action %}
+<form action="/added" method = "POST">
+{% endblock %}
+
+{% block other %}
+<div class="form">
+  <input type="text" class="formBackground" name="confirmpassword" placeholder="confirm password">
+</div>
+{% endblock %}
+
+{% block submit %}
+Register
+{% endblock %}
+
+{% block text %}
+<p> already have an account? <a href="/"> login </a> </p>
 {% endblock %}
