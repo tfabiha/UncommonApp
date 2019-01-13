@@ -1,21 +1,23 @@
 import sqlite3 #imports sqlite
 
 def users(): #creates the users db
-    DB_FILE="../data/userInfo.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor() #facilitates db operations
-    command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
+    command = "CREATE TABLE usersInfo(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
     c.execute(command)
 
 def puzzles(): #creates the puzzles db
-    DB_FILE="../data/puzzles.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor() #facilitates db operations
-    command = "CREATE TABLE puzzles(puzzleID INTEGER, puzzle_content TEXT, averageMoves INT)"
+    command = "CREATE TABLE puzzles(puzzleID INTEGER PRIMARY KEY AUTOINCREMENT, puzzle_content TEXT, averageMoves INT)"
     c.execute(command)
 
+
+
 def logs(): #creates the logs db
-    DB_FILE="../data/logs.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
     c = db.cursor() #facilitates db operations
     command = "CREATE TABLE logs(username TEXT, moves INTEGER, puzzleID INTEGER)"
