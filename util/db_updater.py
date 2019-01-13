@@ -1,28 +1,38 @@
-''' this file stores the updating database code'''
+''' this file stores the updating ../database code'''
 
 import sqlite3
-from flask import request,session
+#from flask import request,session
 '''
 adduser(username,password)
 params:username, password
 username is the username of the user
 password is the password of the user
-function adds the username and password to the users database
+function adds the username and password to the users ../database
 '''
 def adduser(username, password):
-    DB_FILE="data/userInfo.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    insert = "INSERT INTO users VALUES(?,?,?,?)"
+    insert = "INSERT INTO usersInfo VALUES(?,?,?,?)"
     params=(username,password,0,"")
     c.execute(insert,params)
     db.commit()
     db.close()
+adduser("user", "pass")
+print("added user")
 
-
-
-      #  command = "CREATE TABLE users(username TEXT, password TEXT, moves INTEGER, likedPuzzles TEXT)"
-
+def addPuzzle(puzzle_description):
+    global puzzle_count
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    insert = "INSERT INTO puzzles(puzzle_content,averageMoves) VALUES(?,?)"
+    params=(puzzle_description,0)
+    c.execute(insert,params)
+    db.commit()
+    db.close()
+addPuzzle("addapuzzle")
+print("added puzzle")
 
 '''
 addScore(username,score):
@@ -31,18 +41,23 @@ username is the username of the user in session
 moves is the point value of the question added
 function adds the point value of the question to the users score
 '''
-def addMoves(username,score):
-    DB_FILE="data/user.db"
+
+command = "CREATE TABLE logs(username TEXT, moves INTEGER, puzzleID INTEGER)"
+
+def addLog(username,moves,puzzleID):
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = "SELECT addMoves FROM users WHERE users.username ='" + username + "';" #selects score of the user
-    c.execute(command)
-    oldScore = c.fetchone()
-    newScore = oldScore[0] + score
-    command = "UPDATE users SET moves = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
-    c.execute(command)
+    command = "INSERT INTO logs VALUES(?,?,?)"
+    param = (username,moves,puzzleID)
+    c.execute(command, param)
+
+#    command = "UPDATE users SET moves = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
     db.commit()
     db.close()
+
+addLog("hi", 2, 4)
+print("addlog")
 '''
 subScore(username,score):
 params:username, score
@@ -62,7 +77,7 @@ answer is api provided answer for the question
 '''
 
 def ansQuestion(username, question):
-    DB_FILE="data/userInfo.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO questions VALUES(?,?)"
