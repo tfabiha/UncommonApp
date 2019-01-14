@@ -15,19 +15,27 @@ for (var i = 0; i < sq.length; i++)
 
 var resp = document.getElementsByClassName("response")[0];
 
+var addBtn= function(e) {
+    var buttons = document.getElementById('button');
+    var newB = document.createElement('button');
+    newB.classList.add('btn');
+    newB.classList.add('btn-secondary');
+    newB.classList.add('check');
+    newB.classList.add('button');
+    newB.innerHTML = "Check";
+    newB.addEventListener('click',solvedstate);
+    buttons.appendChild(newB);
+};
+    
+    
 sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
 			randomize();
+			sq.style.display = "none";
+			addBtn();
 		    });
-
-sq = document.getElementsByClassName("check")[0];
-sq.addEventListener("click", function(e)
-		    {
-			solvedstate();
-		    });
-
 var moves = 0;
 
 // SETUP FOR FINDING SOLVED STATE
@@ -47,7 +55,7 @@ var lower_change = []
 var setup = function(e)
 {
     // meta = [ROWxCOLUMN, UL, UR, LL, LR]
-    var meta = document.getElementsByTagName("TABLE")[0].className.split(" ");
+    var meta = document.getElementsByTagName("table")[0].className.split(" ");
 
     // declare the rows and columns
     var temp = meta[0].split("x");
@@ -84,7 +92,7 @@ var setup = function(e)
 	
 	puzzle.push( one_row );
     }
-        
+    
     for (var i = 0; i < 3; i++)
     {
 	upper_change.push( (UR[i] - UL[i]) / (column - 1) );
@@ -169,12 +177,12 @@ var solvedstate = function(e)
     
     if (solved)
     {
-	resp.innerHTML = "it's solved!";
+	resp.innerHTML = "It's solved!";
 	console.log("true");
     }
     else
     {
-	resp.innerHTML = "wrong! try again";
+	resp.innerHTML = "Wrong! try again";
 	console.log("false");
     }
 
@@ -233,3 +241,6 @@ var randomize = function(e)
 	tile1.style.backgroundColor = color;
     }
 }
+
+
+
