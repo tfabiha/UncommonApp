@@ -72,3 +72,9 @@ dennisC -- 2019-01-11 21:20
 - used ipapi, airvisual, and colourlovers APIs to create a set
 of four colors that are based on the weather of the location
 of the user
+==============================================================
+dennisC -- 2019-01-13 21:00
+--------------------------------------------------------------
+- made borders on puzzle locked and have a dot in the middle
+of the square
+
