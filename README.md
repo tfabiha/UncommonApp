@@ -11,7 +11,7 @@ Using RESTful APIs we will mimic the game “i love hue.” People will be given
 API Name | Link | Key & Quota | How to Create Key 
 --- | --- | --- | ---
 COLOURlovers API | TBD  | no key needed and unlimited quotas! | N/A
-IP Identifier | http://ip-api.com | no key needed and unlimited quotas! | Create an account and on the dashboard where it says API key, follow those instructions.
+IP Identifier | http://ip-api.com | tbd! | Create an account and on the dashboard where it says API key, follow those instructions.
 Weather API | TBD | no key needed and unlimited quotas! | N/A
 
 **Where to place your API**
