@@ -1,7 +1,7 @@
 import sqlite3 #imports sqlite
 
 def getMovesUser(username):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "SELECT moves FROM usersInfo WHERE usersInfo.username ='" + username + "';" #selects score of the user
@@ -12,7 +12,7 @@ def getMovesUser(username):
     return(oldScore)
 
 def getPuzzlePlayedUser(username):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "SELECT puzzleID FROM logs WHERE logs.username ='" + username + "';" #selects score of the user
@@ -21,7 +21,7 @@ def getPuzzlePlayedUser(username):
     return(numPuzzlesDone)
 
 def getLikedPuzzles(username):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "SELECT likedPuzzles FROM usersInfo WHERE usersInfo.username ='" + username + "';" #selects score of the user
@@ -35,7 +35,7 @@ def getLikedPuzzles(username):
 #print(getLikedPuzzles("user1"))
 
 def getPuzzle(puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = 'SELECT puzzle_content from puzzles WHERE puzzles.puzzleID = (?)'
@@ -52,7 +52,7 @@ def getPuzzle(puzzleID):
 
 
 def getMovesPuzzle(puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "SELECT averageMoves FROM puzzles WHERE puzzles.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
@@ -63,7 +63,7 @@ def getMovesPuzzle(puzzleID):
     return(oldScore)
 
 def getPuzzlePlayedPuzzle(puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "SELECT puzzleID FROM logs WHERE logs.puzzleID ='" + str(puzzleID)+ "';" #selects score of the user
@@ -107,7 +107,7 @@ def password(username):
 
 '''
 username(username)
-returns an empty list if username doesn't exist in the ../database
+returns an empty list if username doesn't exist in the ./database
 returns [username] if username exists
 '''
 def username(username):

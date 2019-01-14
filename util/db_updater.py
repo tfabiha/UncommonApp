@@ -1,17 +1,19 @@
-''' this file stores the updating ../database code'''
+''' this file stores the updating ./database code'''
 
 import sqlite3
-from db_search import *
+from util import db_search as search
+
+#from db_search import *
 #from flask import request,session
 '''
 adduser(username,password)
 params:username, password
 username is the username of the user
 password is the password of the user
-function adds the username and password to the users ../database
+function adds the username and password to the users ./database
 '''
 def adduser(username, password):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO usersInfo VALUES(?,?,?,?)"
@@ -24,7 +26,7 @@ def adduser(username, password):
 
 def addPuzzle(puzzle_description):
     global puzzle_count
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO puzzles(puzzle_content,averageMoves) VALUES(?,?)"
@@ -36,7 +38,7 @@ def addPuzzle(puzzle_description):
 #addPuzzle("puzzle1")
 
 def addLog(username,moves,puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "INSERT INTO logs VALUES(?,?,?)"
@@ -51,7 +53,7 @@ def addLog(username,moves,puzzleID):
 
 # when you complete a puzzle, updates average moves for the player and for the puzzle itself
 def updateAverageMovesUser(username,moves,puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     newMoves= getMovesUser(username) + moves
@@ -66,10 +68,10 @@ def updateAverageMovesUser(username,moves,puzzleID):
     db.close()
     return ("finished update average moves user")
 
-print(updateAverageMovesUser("user1", 5, 1))
+#print(updateAverageMovesUser("user1", 5, 1))
 
 def updateAverageMovesPuzzle(moves,puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     newMoves= getMovesPuzzle(puzzleID) + moves
@@ -80,10 +82,10 @@ def updateAverageMovesPuzzle(moves,puzzleID):
     db.commit()
     db.close()
 #print (updateAverageMovesPuzzle(12, 1))
-print ("hi michelle")
+#print ("hi michelle")
 
 def updatedLikedPuzzles(username, puzzleID):
-    DB_FILE="../data/uncommonApp.db"
+    DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     list = getLikedPuzzles(username) + str(puzzleID) + ","
@@ -93,9 +95,9 @@ def updatedLikedPuzzles(username, puzzleID):
     db.commit()
     db.close()
     return ("finished updatelikedpuzzles")
-print(updatedLikedPuzzles("user1", 5))
-print(":)")
-
-print( updateAverageMovesPuzzle(15,1))
-print(getMovesPuzzle("1"))
-#print(getLikedPuzzles("user1"))
+# print(updatedLikedPuzzles("user1", 5))
+# print(":)")
+#
+# print( updateAverageMovesPuzzle(15,1))
+# print(getMovesPuzzle("1"))
+# #print(getLikedPuzzles("user1"))
