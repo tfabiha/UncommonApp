@@ -54,7 +54,7 @@ $ python3 -m venv <VENV>
 * Debugger is active!
 * Debugger PIN: 248-748-502
 ```
-9. Enjoy
+9. Enjoy!
 
  ## Dependencies: 
 1. Flask: Runs the web application on local host.
