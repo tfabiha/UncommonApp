@@ -10,12 +10,17 @@ for (var i = 0; i < sq.length; i++)
        !(sq[i].className.includes('row_' + (sq[sq.length - 1].className[8]))) &&
        !(sq[i].className.includes('column_0')) &&
        !(sq[i].className.includes('column_' + (sq[sq.length - 1].className[17])))) {
-    sq[i].addEventListener("click", function()
+         sq[i].addEventListener("click", function()
 			   {
 			       clicked.push(this); // appends to array clicked
 			       swap(); // handles swaping if applicable
 			   });
        }
+    else{
+        sq[i].innerHTML= "."
+        sq[i].className += " locked"
+        console.log(sq[i])
+      }
 };
 
 var resp = document.getElementsByClassName("response")[0];

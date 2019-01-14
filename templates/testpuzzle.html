@@ -20,7 +20,7 @@
 
     {% for row in range( colors|length ) %}
     <tr>
-      
+
       {% for column in range( colors[row]|length ) %}
       <td style = "padding: 0; margin: 0;">
       	<div style = "width: 100px;
@@ -29,7 +29,10 @@
       		      {{colors[row][column][1]}},
       		      {{colors[row][column][2]}});
       		      padding: 10px;
-      		      box-sizing: border-box"
+                box-sizing: border-box;
+                vertical-align: middle;
+                text-align: center;
+                font-size: 40px""
 
       	     class = "box row_{{row}} column_{{column}}">
 	</div>
@@ -52,4 +55,3 @@
 <script src="/static/puzzle.js"></script>
 
 {% endblock %}
-
