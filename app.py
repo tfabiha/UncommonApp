@@ -116,6 +116,10 @@ def added():
 #-------------------------------------------featured puzzle--------------------------------------------------------
 @app.route('/weatherPuz',methods = ['GET','POST'])
 def genWeather():
+    '''
+    Generates a featured puzzle based on the current weather of the user and puts
+    it on the home page
+    '''
     if 'username' not in session:
         redirect(url_for('authPage'))
     else:
