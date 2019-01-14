@@ -14,9 +14,15 @@ COLOURlovers API | TBD  | no key needed and unlimited quotas! | N/A
 IP Identifier | http://ip-api.com | no key needed and unlimited quotas! | Create an account and on the dashboard where it says API key, follow those instructions.
 Weather API | TBD | no key needed and unlimited quotas! | N/A
 
-** Where to place your API **
+**Where to place your API**
 1) Please put your API key in a file named ```keys.json``` with a key value of weather. 
-
+For example:
+```
+    {
+        "weather": "[API_KEY]"
+    }
+```
+    
 ## Instructions to Run:
 
 1. Check to see if you have python3 installed by running ``` python3 ``` in the terminal. It should produce something like: 
@@ -48,11 +54,6 @@ $ python3 -m venv <VENV>
 * Debugger is active!
 * Debugger PIN: 248-748-502
 ```
-  
-Flask: Runs the web application on local host.
-Wheel: Used for Flask.
-SQLite: Creates databases for storing information.
-URLLib3: Receives information from APIs.
 
  ## Dependencies: 
 1. Flask: Runs the web application on local host.
