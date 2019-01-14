@@ -46,3 +46,7 @@ body {
 .button {
     width:100px;
 }
+
+#flashedMessages {
+    color:red;
+}
