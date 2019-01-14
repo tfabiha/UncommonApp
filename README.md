@@ -45,7 +45,7 @@ $ python3 -m venv <VENV>
     ```
   
 5. Clone this repo by typing ```$ git clone git@github.com:tfabiha/UncommonApp.git``` in the terminal. 
-6. Get your API keys(#APIs)
+6. Get your [API keys](#APIs)
 7. Change into the repo (```cd UncommonApp```)and run the python file by typing ```$ python app.py``` in the terminal. 
 8. If successful, the following message will appear in the terminal:
 ```
