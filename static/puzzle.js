@@ -6,11 +6,16 @@ var clicked = []; // will contain list of currently clicked boxes
 // for each tile adds in an eventlistener to handle swaping
 for (var i = 0; i < sq.length; i++)
 {
+    if(!(sq[i].className.includes('row_0')) &&
+       !(sq[i].className.includes('row_' + (sq[sq.length - 1].className[8]))) &&
+       !(sq[i].className.includes('column_0')) &&
+       !(sq[i].className.includes('column_' + (sq[sq.length - 1].className[17])))) {
     sq[i].addEventListener("click", function()
 			   {
 			       clicked.push(this); // appends to array clicked
 			       swap(); // handles swaping if applicable
 			   });
+       }
 };
 
 var resp = document.getElementsByClassName("response")[0];
@@ -26,8 +31,8 @@ var addBtn= function(e) {
     newB.addEventListener('click',solvedstate);
     buttons.appendChild(newB);
 };
-    
-    
+
+
 sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
@@ -72,7 +77,7 @@ var setup = function(e)
 	{
 	    temp.push( parseInt( meta[i][j], 10 ) );
 	}
-	
+
 	meta[i] = temp;
     }
 
@@ -89,10 +94,10 @@ var setup = function(e)
 	{
 	    one_row.push( [] );
 	}
-	
+
 	puzzle.push( one_row );
     }
-    
+
     for (var i = 0; i < 3; i++)
     {
 	upper_change.push( (UR[i] - UL[i]) / (column - 1) );
@@ -120,16 +125,16 @@ var setup = function(e)
 	for (var r = 0; r < row; r++)
 	{
 	    if (puzzle[r][c].length == 0)
-	    { 
-		
+	    {
+
 		for (var i = 0; i < 3; i++)
 		{
 		    puzzle[r][c].push( puzzle[0][c][i] + change[i] * r );
 		}
-		
+
 	    }
 	}
-	
+
     }
 }
 
@@ -156,17 +161,17 @@ var solvedstate = function(e)
 	    {
 		tile[i] = parseInt( tile[i], 10 );
 	    }
-	    
+
 	    // console.log(tile);
 
 	    for (var i = 0; i < 3; i++)
 	    {
 		// console.log(tile[i]);
 		// console.log(Math.round(puzzle[r][c][i]));
-		
+
 		solved = solved & tile[i] == Math.round(puzzle[r][c][i]);
 	    }
-	    
+
 	    if (!solved)
 	    {
 		break out;
@@ -174,7 +179,7 @@ var solvedstate = function(e)
 	}
     }
 
-    
+
     if (solved)
     {
 	resp.innerHTML = "It's solved!";
@@ -202,7 +207,7 @@ var swap = function(e)
     {
 	console.log(clicked);
 	var color = clicked[0].style.backgroundColor;
-	
+
 	clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
 	clicked[1].style.backgroundColor = color;
 	clicked[0].style.border = "0px";
@@ -211,7 +216,7 @@ var swap = function(e)
 	{
 	    moves += 1;
 	}
-	
+
 	clicked = [];
     }
 
@@ -236,11 +241,8 @@ var randomize = function(e)
 	tile1 = document.getElementsByClassName( tile1 )[0];
 
 	var color = tile0.style.backgroundColor;
-	
+
 	tile0.style.backgroundColor = tile1.style.backgroundColor;
 	tile1.style.backgroundColor = color;
     }
 }
-
-
-
