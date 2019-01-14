@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block content %}
+<center>
 <div class="heading">
   <p> Welcome {{Name}}! </p>
 </div>
@@ -38,13 +39,15 @@
 
   </tr>
   {% endfor %}
-
-  <div>
-<p class = "rand"> click here to randomize </p>
-<p class = "check"> click here to see if you're correct </p>
-<p class = "response"></p>
-  </div>
-</table>
+  </table>
+<br>
+<div id="button">
+  <button type="button" id="rand" class="button rand btn btn-secondary"> Randomize </button>
+</div>
+<br>
+<p class="response">
+  </p>
+</center>
 <script src="/static/puzzle.js"></script>
 
 {% endblock %}

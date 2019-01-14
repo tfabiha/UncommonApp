@@ -1,0 +1,46 @@
+{% extends base.html %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="../static/login.css">
+<title> Customize </title>
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="text-center" style="padding:50px 0">
+  <div class="heading"> Customize </div>
+  <div class="login">
+  <form action="/auth" method="POST">
+    <div class="loginBackground">
+      <div id="flashedMessages">
+	{% set msgs = get_flashed_messages() %}
+	{% for each in msgs %}
+	<h5 style="color:#ff2821">{{each}}</h5>
+	<br>
+	{% endfor %}
+      </div>
+      <div class="form">
+	<div class="formText">
+	  Size: <br>
+	</div>
+	<select name="size">
+	  <option value="4"> 4x4 </option>
+	  <option value="4"> 5x5 </option>
+	  <option value="4"> 6x6 </option>
+	  <option value="4"> 7x7 </option>
+	  <option value="4"> 8x8 </option>
+	  </select>
+      </div>
+      <br>
+      
+      <div class="form">
+	<div class="formText">
+	  Color: <br>
+	  <button class="btn btn-secondary"> randomize </button>
+	</div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+

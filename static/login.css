@@ -66,3 +66,9 @@ a:hover {
     text-align: right;
     color:#aaaaaa;
 }
+
+.formText {
+    font-size:18px;
+    color:#aaaaaa;
+    font-weight:bold;
+}
