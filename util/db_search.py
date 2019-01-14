@@ -1,17 +1,77 @@
 import sqlite3 #imports sqlite
 
+def getMovesUser(username):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT moves FROM usersInfo WHERE usersInfo.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    oldScore = c.fetchone()[0]
+    db.commit()
+    db.close()
+    return(oldScore)
+
+def getPuzzlePlayedUser(username):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT puzzleID FROM logs WHERE logs.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    numPuzzlesDone = len(c.fetchall())
+    return(numPuzzlesDone)
+
+def getLikedPuzzles(username):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT likedPuzzles FROM usersInfo WHERE usersInfo.username ='" + username + "';" #selects score of the user
+    c.execute(command)
+    list  = c.fetchall()
+    #print(list[0])
+    db.commit()
+    db.close()
+    return (list[0][0])
+    #return ("finished getlikedpuzzles")
+#print(getLikedPuzzles("user1"))
+
 def getPuzzle(puzzleID):
-    DB_FILE="./data/uncommonApp.db"
+    DB_FILE="../data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = 'SELECT puzzle_content from puzzles WHERE puzzles.puzzleID = (?)'
     c.execute(command, (puzzleID,))
-    scores = c.fetchall() #retrieves the scores in descending order
-    print(scores)
+
+    puzzle = str(c.fetchall()[0][0]) #retrieves the scores in descending order
+
+    db.commit()
+    db.close()
     #scores.sort(reverse=True)
     #return scores[0:5]
-    return "hi"
+    return (puzzle)
+#print (getPuzzle(1))
 
+
+def getMovesPuzzle(puzzleID):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT averageMoves FROM puzzles WHERE puzzles.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
+    c.execute(command)
+    oldScore = c.fetchone()[0]
+    db.commit()
+    db.close()
+    return(oldScore)
+
+def getPuzzlePlayedPuzzle(puzzleID):
+    DB_FILE="../data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT puzzleID FROM logs WHERE logs.puzzleID ='" + str(puzzleID)+ "';" #selects score of the user
+    c.execute(command)
+    numPuzzlesDone = len(c.fetchall())
+    db.commit()
+    db.close()
+    return(numPuzzlesDone)
 
 '''
 highScores(puzzleID)
