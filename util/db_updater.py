@@ -81,7 +81,7 @@ def getMovesUser(username):
     db.commit()
     db.close()
     return(oldScore)
-print (getAverageMoves("user"))
+#print (getAverageMoves("user"))
 
 def getPuzzlePlayedUser(username):
     DB_FILE="../data/uncommonApp.db"

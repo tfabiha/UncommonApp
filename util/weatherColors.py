@@ -22,7 +22,7 @@ def getWeather():
     '''
     location = list(getLocation())
     try:
-        with open('../keys.json') as f:
+        with open('keys.json') as f:
             data = json.load(f)
     except:
         pass

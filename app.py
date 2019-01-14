@@ -5,6 +5,7 @@ from util import db_updater as update
 from util import db_search as search
 from util import db_builder as builder
 from util import colors
+from util import weatherColors
 from passlib.hash import sha256_crypt
 
 import ssl
@@ -57,7 +58,7 @@ def authPage():
             userNames.append(scores[counter][1])
             counter += 1
 '''
-        return render_template('home.html', Name = username)
+        return redirect(url_for('genWeather'))
     else:
         try:
             username=request.form['username'] #username
@@ -112,12 +113,39 @@ def added():
     except:
         return redirect(url_for('home'))
 
+#-------------------------------------------featured puzzle--------------------------------------------------------
+@app.route('/weatherPuz',methods = ['GET','POST'])
+def genWeather():
+    if 'username' not in session:
+        redirect(url_for('authPage'))
+    else:
+        name = session['username']
+        rows = 8
+        columns = 8
+        palette = weatherColors.makePuzOnWeather()
+        puzzle = colors.puzzleGen(rows,columns,palette[0],palette[1],palette[2],palette[3])
+        return render_template('home.html',
+                               Name = name,
+                               colors = puzzle,
+                               tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                               UL = "{},{},{}".format(palette[0][0],
+                                                      palette[0][1],
+                                                      palette[0][2]), # upper-left color
+                               UR = "{},{},{}".format(palette[1][0],
+                                                      palette[1][1],
+                                                      palette[1][2]), # upper-right color
+                               LL = "{},{},{}".format(palette[2][0],
+                                                      palette[2][1],
+                                                      palette[2][2]), # lower-left color
+                               LR = "{},{},{}".format(palette[3][0],
+                                                      palette[3][1],
+                                                      palette[3][2])) # lower-right color
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
     rows = 8
     columns = 8
-    
+
     palette = colors.getpalette(4)
     puzzle = colors.puzzleGen(rows, columns,
                               palette[0], palette[1],
@@ -141,4 +169,3 @@ def create():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
