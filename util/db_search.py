@@ -1,5 +1,18 @@
 import sqlite3 #imports sqlite
 
+def getPuzzle(puzzleID):
+    DB_FILE="./data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = 'SELECT puzzle_content from puzzles WHERE puzzles.puzzleID = (?)'
+    c.execute(command, (puzzleID,))
+    scores = c.fetchall() #retrieves the scores in descending order
+    print(scores)
+    #scores.sort(reverse=True)
+    #return scores[0:5]
+    return "hi"
+
+
 '''
 highScores(puzzleID)
 For any given puzzle, it will return the top ten users and their moves
@@ -17,6 +30,7 @@ def puzzleHighScores(puzzleID):
     #scores.sort(reverse=True)
     #return scores[0:5]
     return "hi"
+
 '''
 password(username)
 returns the password that matches the username if one exists
