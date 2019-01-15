@@ -1,4 +1,4 @@
-''' this file stores the updating ./database code'''
+''' this file stores the updating database code'''
 
 import sqlite3
 from util import db_search as search
@@ -10,7 +10,7 @@ adduser(username,password)
 params:username, password
 username is the username of the user
 password is the password of the user
-function adds the username and password to the users ./database
+function adds the username and password to userInfo
 '''
 def adduser(username, password):
     DB_FILE="./data/uncommonApp.db"
@@ -22,21 +22,33 @@ def adduser(username, password):
     db.commit()
     db.close()
 
-#adduser("user1", "pass1")
-
-def addPuzzle(puzzle_description):
+'''
+addPuzzle(puzzle_description, moves)
+params:puzzle_description, moves
+puzzle_description is how puzzles are represent in the format of {length, width, corner1color, c2c, c3c, c4c}
+moves is how many moves the first player took to solve the puzzle
+function adds the puzzle_description and moves to the database and assigns it an ID
+'''
+def addPuzzle(puzzle_description, moves):
     global puzzle_count
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     insert = "INSERT INTO puzzles(puzzle_content,averageMoves) VALUES(?,?)"
-    params=(puzzle_description,0)
+    params=(puzzle_description, moves)
     c.execute(insert,params)
     db.commit()
     db.close()
 
 #addPuzzle("puzzle1")
-
+'''
+addLog(username,moves,puzzleID)
+params:username,moves,puzzleID
+username: the user who has solved the puzzle
+moves: the number of moves they took to complete a given puzzle
+puzzleID: the id of the puzzle that was created
+function adds the a new log to the logs database (tracking history)
+'''
 def addLog(username,moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -69,6 +81,7 @@ def updateAverageMovesUser(username,moves,puzzleID):
     return ("finished update average moves user")
 
 #print(updateAverageMovesUser("user1", 5, 1))
+
 
 def updateAverageMovesPuzzle(moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
