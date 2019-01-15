@@ -247,20 +247,20 @@ var randint = function(e)
 
 var randomize = function(e)
 {
-    for (var i = 0; i < 1000; i ++)
-    {
-	var tile0_coor = [randint(row), randint(column)];
-	var tile1_coor = [randint(row), randint(column)];
+  for (var i = 0; i < 1000; i ++)
+  {
+    var tile0_coor = [randint(row - 2) + 1, randint(column - 2) + 1];
+    var tile1_coor = [randint(row - 2) + 1, randint(column - 2) + 1];
 
-	var tile0 = "row_" + tile0_coor[0] + " column_" + tile0_coor[1];
-	tile0 = document.getElementsByClassName( tile0 )[0];
+    var tile0 = "row_" + tile0_coor[0] + " column_" + tile0_coor[1];
+    tile0 = document.getElementsByClassName( tile0 )[0];
 
-	var tile1 = "row_" + tile1_coor[0] + " column_" + tile1_coor[1];
-	tile1 = document.getElementsByClassName( tile1 )[0];
+    var tile1 = "row_" + tile1_coor[0] + " column_" + tile1_coor[1];
+    tile1 = document.getElementsByClassName( tile1 )[0];
 
-	var color = tile0.style.backgroundColor;
+    var color = tile0.style.backgroundColor;
 
-	tile0.style.backgroundColor = tile1.style.backgroundColor;
-	tile1.style.backgroundColor = color;
-    }
+    tile0.style.backgroundColor = tile1.style.backgroundColor;
+    tile1.style.backgroundColor = color;
+  }
 }
