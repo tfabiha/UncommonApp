@@ -19,7 +19,6 @@ for (var i = 0; i < sq.length; i++)
     else{
         sq[i].innerHTML= "."
         sq[i].className += " locked"
-        console.log(sq[i])
       }
 };
 
@@ -47,19 +46,6 @@ sq.addEventListener("click", function(e)
 			addBtn();
 		    });
 var moves = 0;
-
-var likedResp = document.getElementsByClassName("likedRes")[0];
-liked = document.getElementById('like');
-var test = document.getElementById('likeBut')
-console.log(test)
-liked.addEventListener('click', function(e)
-  {
-    likedResp.innerHTML = "<br>Liked!"
-    likedResp.style['font-size'] = '20px'
-    likedResp.style.color = 'blue'
-    liked.getElementsByTagName('button')[0].className = "button rand btn btn-success"
-    console.log(liked)
-});
 
 // SETUP FOR FINDING SOLVED STATE
 var row = 0;
@@ -249,8 +235,8 @@ var randomize = function(e)
 {
     for (var i = 0; i < 1000; i ++)
     {
-	var tile0_coor = [randint(row), randint(column)];
-	var tile1_coor = [randint(row), randint(column)];
+	var tile0_coor = [randint(row -2) + 1, randint(column - 2) + 1];
+	var tile1_coor = [randint(row - 2) + 1, randint(column - 2) + 1];
 
 	var tile0 = "row_" + tile0_coor[0] + " column_" + tile0_coor[1];
 	tile0 = document.getElementsByClassName( tile0 )[0];

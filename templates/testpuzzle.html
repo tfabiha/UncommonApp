@@ -13,6 +13,26 @@
   <div class="moves">
     <p> Moves: 0</p>
     </div>
+<div class="modal fade" id="correctPop" tabindex="-1" role="dialog" aria-labelledby="solvedPop" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><center>Correct!</center></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Moves:
+        Average Moves:
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Home</button>
+        <button type="button" class="btn btn-primary">Save Puzzle</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="puzzle">
   <table style = "cellpadding: 0;
 		  cellspacing: 0;
@@ -51,11 +71,6 @@
   <button type="button" id="rand" class="button rand btn btn-secondary"> Randomize </button>
 </div>
 <br>
-<div id="like">
-    <button type="submit" id = "likeBut" name = {{puzzleInfo}} class="button rand btn btn-secondary"> Like </button>
-</div>
-<p class="likedRes">
-</p>
 <p class="response">
 </p>
 </center>
