@@ -26,16 +26,12 @@ var resp = document.getElementsByClassName("response")[0];
 
 var addBtn= function(e) {
     var buttons = document.getElementById('button');
-    var newB = document.createElement('button');
-    newB.classList.add('btn');
-    newB.classList.add('btn-secondary');
-    newB.classList.add('check');
-    newB.classList.add('button');
-    newB.innerHTML = "Check";
+    var newB = document.getElementById('check');
     newB.addEventListener('click',solvedstate);
+    newB.style.display = "inline-block"
+    console.log(newB.style)
     buttons.appendChild(newB);
 };
-
 
 sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
@@ -143,7 +139,6 @@ var setup = function(e)
 }
 
 setup();
-console.log(puzzle);
 
 var solvedstate = function(e)
 {
@@ -186,7 +181,7 @@ var solvedstate = function(e)
 
     if (solved)
     {
-	resp.innerHTML = "It's solved!";
+	
 	console.log("true");
     }
     else
