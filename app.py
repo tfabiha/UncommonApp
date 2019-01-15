@@ -17,7 +17,6 @@ import sqlite3 #imports sqlite
 
 app = Flask(__name__)
 app.secret_key = urandom(32)
-
 #----------------------------------------------------------home--------------------------------------------------------
 @app.route("/",methods=['GET','POST'])
 def home():
@@ -147,6 +146,8 @@ def genWeather():
 #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/create',methods = ['GET','POST'])
 def create():
+    if 'username' not in session:
+        render_template('auth.html')
     rows = 8
     columns = 8
 
@@ -154,7 +155,8 @@ def create():
     puzzle = colors.puzzleGen(rows, columns,
                               palette[0], palette[1],
                               palette[2], palette[3])
-
+    dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, palette[0], palette[1], palette[2], palette[3])
+    dbString = "".join(dbString.split(" "))
     return render_template('testpuzzle.html',
                            colors = puzzle,
                            tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
@@ -169,7 +171,27 @@ def create():
                                                   palette[2][2]), # lower-left color
                            LR = "{},{},{}".format(palette[3][0],
                                                   palette[3][1],
-                                                  palette[3][2])) # lower-right color
+                                                  palette[3][2]), # lower-right color
+                           puzzleInfo = dbString)
+#-------------------------------------------liked puzzles page--------------------------------------------------------
+@app.route('/puzzles', methods = ["GET","POST"])
+def puzzles():
+    if 'username' in session: #if user is logged in
+        # likedPuz = db_search.getLikedPuzzles(session['username'])
+        # puzzles = []
+        # for puz in likedPuz:
+        #     puzzle = puzzle.split(';')
+        #     rows = int(puzzle[0])
+        #     cols = int(puzzle[1])
+        #     ULC = json.loads(puzzle[2])
+        #     URC = json.loads(puzzle[3])
+        #     LLC = json.loads(puzzle[4])
+        #     LRC = json.loads(puzzle[5])
+        #     puzzle = colors.puzzleGen(rows,cols,ULC,URC,LLC,LRC)
+        #     puzzles.append(puzzle)
+        return render_template('puzzles.html',puzzles = puzzles)
+    else:
+        return render_template('auth.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -48,6 +48,19 @@ sq.addEventListener("click", function(e)
 		    });
 var moves = 0;
 
+var likedResp = document.getElementsByClassName("likedRes")[0];
+liked = document.getElementById('like');
+var test = document.getElementById('likeBut')
+console.log(test)
+liked.addEventListener('click', function(e)
+  {
+    likedResp.innerHTML = "<br>Liked!"
+    likedResp.style['font-size'] = '20px'
+    likedResp.style.color = 'blue'
+    liked.getElementsByTagName('button')[0].className = "button rand btn btn-success"
+    console.log(liked)
+});
+
 // SETUP FOR FINDING SOLVED STATE
 var row = 0;
 var column = 0;
