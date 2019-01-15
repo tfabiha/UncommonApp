@@ -6,10 +6,11 @@
 {% endblock %}
 
 {% block content %}
+<center>
 <div class="text-center" style="padding:50px 0">
   <div class="heading"> Customize </div>
   <div class="login">
-  <form action="/auth" method="POST">
+  <form action="/puzzles" method="POST">
     <div class="loginBackground">
       <div id="flashedMessages">
 	{% set msgs = get_flashed_messages() %}
@@ -34,14 +35,19 @@
       <div class="form">
 	<div class="formText">
 	  Color: <br>
-	  <div class="color">
-	    </div>
-	  <button class="btn btn-secondary" name="color"> randomize </button>
+	  <ul class="colors">
+	    {% for each in colors %}
+	    <li style="background-color:"{{each}}> </li>
+	    {% endfor %}
+	  </ul>
+	  <div id="color">
+	  <button class="btn btn-secondary" name="submit"> Submit </button>
 	</div>
       </div>
     </div>
   </form>
-</div>
+  </div>
+  </center>
 
 
 

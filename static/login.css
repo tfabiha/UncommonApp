@@ -72,3 +72,19 @@ a:hover {
     color:#aaaaaa;
     font-weight:bold;
 }
+
+ul {
+    list-style-type:none;
+}
+
+li{
+    border-style:solid;
+    border-width:1px;
+    border-color:#aaaaaa;
+    display:inline-block;
+    height:30px;
+    width:30px;
+    
+}
+
+
