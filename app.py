@@ -120,7 +120,7 @@ def genWeather():
     it on the home page
     '''
     if 'username' not in session:
-        redirect(url_for('authPage'))
+        redirect(url_for('home'))
     else:
         name = session['username']
         rows = 8
@@ -147,7 +147,7 @@ def genWeather():
 @app.route('/create',methods = ['GET','POST'])
 def create():
     if 'username' not in session:
-        render_template('auth.html')
+        redirect(url_for('home'))
     rows = 8
     columns = 8
 
@@ -191,7 +191,38 @@ def puzzles():
         #     puzzles.append(puzzle)
         return render_template('puzzles.html',puzzles = puzzles)
     else:
-        return render_template('auth.html')
+        return redirect(url_for('home'))
+
+@app.route('/customize',methods = ["GET","POST"])
+def custom():
+    if 'username' in session:
+        palette=colors.getpalette(4)
+        colorList0=[]
+        i=0;
+        while i<len(palette):
+            colorList0.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
+            i = i + 1
+        palette=colors.getpalette(4)
+        colorList1=[]
+        i=0;
+        while i<len(palette):
+            colorList1.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
+            i = i + 1
+        palette=colors.getpalette(4)
+        colorList2=[]
+        i=0;
+        while i<len(palette):
+            colorList2.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
+            i = i + 1
+        palette=colors.getpalette(4)
+        colorList3=[]
+        i=0;
+        while i<len(palette):
+            colorList3.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
+            i = i + 1
+        return render_template('customize.html', colors0=colorList0, colors1=colorList1, colors2=colorList2, colors3=colorList3)
+    else:
+        return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)

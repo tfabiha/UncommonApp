@@ -77,14 +77,25 @@ ul {
     list-style-type:none;
 }
 
-li{
+.colorfill{
     border-style:solid;
     border-width:1px;
     border-color:#aaaaaa;
     display:inline-block;
     height:30px;
     width:30px;
-    
+    text-align:center;
 }
 
+.radio {
+    width:30px;
+}
+
+#preview {
+    background-color: blue;
+    width:70%;
+    display:inline-block;
+    margin-top:140px;
+    margin-left:50px;
+}
 

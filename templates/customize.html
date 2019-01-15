@@ -1,17 +1,15 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="../static/login.css">
+<link rel="stylesheet" type="text/css" href="../static/UncommonApp.css">
 <title> Customize </title>
-{% block head %}
 {% endblock %}
 
 {% block content %}
-<center>
-<div class="text-center" style="padding:50px 0">
+<div style="padding:50px 0; width:20%; display:inline-block; float:left;">
   <div class="heading"> Customize </div>
-  <div class="login">
   <form action="/puzzles" method="POST">
-    <div class="loginBackground">
+    <div class="loginBackground text-center">
       <div id="flashedMessages">
 	{% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
@@ -29,25 +27,70 @@
 	  <option value="4"> 6x6 </option>
 	  <option value="4"> 7x7 </option>
 	  <option value="4"> 8x8 </option>
-	  </select>
+	</select>
       </div>
       <br>
       <div class="form">
 	<div class="formText">
-	  Color: <br>
+	  Top Left Corner: <br>
 	  <ul class="colors">
-	    {% for each in colors %}
-	    <li style="background-color:"{{each}}> </li>
+	    {% for each in colors0 %}
+	    <li class="colorfill" style="background-color:{{each}}"> </li>
+	    {% endfor %}
+	    <br>
+	    {% for each in colors0 %}
+	    <input type="radio" class="radio" name="tlcolor" value="{{each}}">
 	    {% endfor %}
 	  </ul>
-	  <div id="color">
-	  <button class="btn btn-secondary" name="submit"> Submit </button>
+	</div>
+	<div class="formText">
+	  Top Right Corner: <br>
+	  <ul class="colors">
+	    {% for each in colors1 %}
+	    <li class="colorfill" style="background-color:{{each}}"> </li>
+	    {% endfor %}
+	    <br>
+	    {% for each in colors1 %}
+	    <input type="radio" class="radio" name="trcolor" value="{{each}}">
+	    {% endfor %}
+	  </ul>
+	</div>
+	<div class="formText">
+	  Bottom Left Corner: <br>
+	  <ul class="colors">
+	    {% for each in colors2 %}
+	    <li class="colorfill" style="background-color:{{each}}"> </li>
+	    {% endfor %}
+	    <br>
+	    {% for each in colors2 %}
+	    <input type="radio" class="radio" name="blcolor" value="{{each}}">
+	    {% endfor %}
+	  </ul>
+	</div>
+	<div class="formText">
+	  Bottom Right Corner: <br>
+	  <ul class="colors">
+	    {% for each in colors3 %}
+	    <li class="colorfill" style="background-color:{{each}};"> </li>
+	    {% endfor %}
+	    <br>
+	    {% for each in colors3 %}
+	    <input type="radio" class="radio" name="brcolor" value="{{each}}">
+	    {% endfor %}
+	  </ul>
+	</div>
+	<div id="color">
+	  <button class="btn btn-secondary" name="preview"> Preview </button>
+	  <button class="btn btn-secondary" name="submit"> Create </button>
 	</div>
       </div>
     </div>
   </form>
-  </div>
-  </center>
+</div>
+<div id="preview">
+  
+</div>
 
+{% endblock %}
 
 

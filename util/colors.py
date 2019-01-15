@@ -6,7 +6,7 @@ def getpalette(count):
     p_all = []
     num_colors = 0
 
-    while num_colors < 4:
+    while num_colors < count:
         URL_PALETTE = "http://www.colourlovers.com/api/palettes/random?format=json"
 
         response = request.Request(URL_PALETTE, headers =
