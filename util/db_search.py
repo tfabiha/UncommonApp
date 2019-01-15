@@ -1,5 +1,6 @@
 import sqlite3 #imports sqlite
 
+
 def getMovesUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
