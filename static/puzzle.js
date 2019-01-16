@@ -36,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			randomize();
+			//randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });
@@ -142,7 +142,7 @@ setup();
 var solvedstate = function(e)
 {
     var solved = true;
-    
+
     out:
     for (var r = 0; r < row; r++)
     {
@@ -180,23 +180,23 @@ var solvedstate = function(e)
 	}
     }
 
-    
+
     //console.log(solved)
     //solved = true
     if (solved)
     {
-	modalBut = document.getElementById('check')
-	console.log(modalBut)
-	numMoves = document.getElementsByClassName('modal-body')[0]
-	index = numMoves.innerHTML.indexOf('Moves')
-	numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
-
+      resp.innerHTML = ""
+       numMoves = document.getElementsByClassName('modal-body')[0]
+       index = numMoves.innerHTML.indexOf('Moves')
+       numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
+       console.log(solved)
     }
     else
     {
-	resp.innerHTML = "Wrong! try again";
+	     resp.innerHTML = "Wrong! try again";
+       e.stopPropagation()
     }
-    
+
     return solved
 }
 

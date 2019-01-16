@@ -1,6 +1,7 @@
 import json
 from urllib.request import Request, urlopen
 import urllib.parse
+import random
 
 def getLocation():
     '''
@@ -41,21 +42,17 @@ def getWeather():
         response = response.read()
         info = json.loads(response)
         weather = info['data']['current']['weather']['ic']
+        keyword = ""
+        if weather == '01d' or weather == '02d':
+            keyword = "sun"
+        elif weather == '01n' or weather == '02n':
+            keyword = 'night'
+        elif weather == '03d' or weather == '04d':
+            keyword = 'cloud'
+        else:
+            keyword = "rain"
     except:
-        url = 'http://api.airvisual.com/v2/city?city=New%20York&state=New%20York&country=USA&key=' % (data['weather'])
-        response = urlopen(url)
-        response = response.read()
-        info = json.loads(response)
-        weather = info['data']['current']['weather']['ic']
-    keyword = ""
-    if weather == '01d' or weather == '02d':
-        keyword = "sun"
-    elif weather == '01n' or weather == '02n':
-        keyword = 'night'
-    elif weather == '03d' or weather == '04d':
-        keyword = 'cloud'
-    else:
-        keyword = 'rain'
+        keyword = random.choice(['sun','night','cloud','rain'])
     return keyword
 def makePuzOnWeather():
     '''
