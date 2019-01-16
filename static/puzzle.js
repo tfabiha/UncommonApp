@@ -36,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			randomize();
+			//randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });
@@ -142,53 +142,47 @@ setup();
 var solvedstate = function(e)
 {
     var solved = true;
-
     out:
     for (var r = 0; r < row; r++)
     {
-	for (var c = 0; c < column; c++)
-	{
-	    var tile_class = "row_" + r + " column_" + c;
-	    var tile = document.getElementsByClassName( tile_class )[0];
-	    tile = tile.style.backgroundColor;
-
-	    tile = tile.substring(4, tile.length - 1);
-	    tile = tile.split(", ");
-
-	    for (var i = 0; i < 3; i++)
-	    {
-		tile[i] = parseInt( tile[i], 10 );
-	    }
-
+	     for (var c = 0; c < column; c++)
+	      {
+          var tile_class = "row_" + r + " column_" + c;
+          var tile = document.getElementsByClassName( tile_class )[0];
+          tile = tile.style.backgroundColor;
+          tile = tile.substring(4, tile.length - 1);
+          tile = tile.split(", ");
+          for (var i = 0; i < 3; i++)
+          {
+		           tile[i] = parseInt( tile[i], 10 );
+          }
 	    // console.log(tile);
-
-	    for (var i = 0; i < 3; i++)
-	    {
+          for (var i = 0; i < 3; i++)
+	        {
 		// console.log(tile[i]);
 		// console.log(Math.round(puzzle[r][c][i]));
-
-		solved = solved & tile[i] == Math.round(puzzle[r][c][i]);
-	    }
-
-	    if (!solved)
-	    {
-		break out;
-	    }
-	}
+		        solved = solved && tile[i] == Math.round(puzzle[r][c][i]);
+          }
+          if (!solved)
+          {
+	           break out;
+          }
+	       }
     }
-
-
+    console.log(solved)
+    solved = true
     if (solved)
     {
+      modalBut = document.getElementById('check')
+      console.log(modalBut)
       numMoves = document.getElementsByClassName('modal-body')[0]
-      console.log(numMoves.innerHTML)
       index = numMoves.innerHTML.indexOf('Moves')
       numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
+
     }
     else
     {
 	     resp.innerHTML = "Wrong! try again";
-	      console.log("false");
     }
 
     return solved
