@@ -10,16 +10,16 @@ for (var i = 0; i < sq.length; i++)
        !(sq[i].className.includes('row_' + (sq[sq.length - 1].className[8]))) &&
        !(sq[i].className.includes('column_0')) &&
        !(sq[i].className.includes('column_' + (sq[sq.length - 1].className[17])))) {
-         sq[i].addEventListener("click", function()
-			   {
-			       clicked.push(this); // appends to array clicked
-			       swap(); // handles swaping if applicable
-			   });
-       }
+        sq[i].addEventListener("click", function()
+			       {
+				   clicked.push(this); // appends to array clicked
+				   swap(); // handles swaping if applicable
+			       });
+    }
     else{
         sq[i].innerHTML= "."
         sq[i].className += " locked"
-      }
+    }
 };
 
 var resp = document.getElementsByClassName("response")[0];
@@ -27,7 +27,7 @@ var resp = document.getElementsByClassName("response")[0];
 var addBtn= function(e) {
     var buttons = document.getElementById('button');
     var newB = document.getElementById('check');
-    newB.addEventListener('click',solvedstate);
+    newB.addEventListener('click', solvedstate);
     newB.style.display = "inline-block"
     buttons.appendChild(newB);
 };
@@ -36,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			//randomize();
+			randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });
@@ -142,57 +142,67 @@ setup();
 var solvedstate = function(e)
 {
     var solved = true;
+    
     out:
     for (var r = 0; r < row; r++)
     {
-	     for (var c = 0; c < column; c++)
-	      {
-          var tile_class = "row_" + r + " column_" + c;
-          var tile = document.getElementsByClassName( tile_class )[0];
-          tile = tile.style.backgroundColor;
-          tile = tile.substring(4, tile.length - 1);
-          tile = tile.split(", ");
-          for (var i = 0; i < 3; i++)
-          {
-		           tile[i] = parseInt( tile[i], 10 );
-          }
+	for (var c = 0; c < column; c++)
+	{
+            var tile_class = "row_" + r + " column_" + c;
+
+            var tile = document.getElementsByClassName( tile_class )[0];
+            tile = tile.style.backgroundColor;
+            tile = tile.substring(4, tile.length - 1);
+            tile = tile.split(", ");
+
+	    for (var i = 0; i < 3; i++)
+            {
+		tile[i] = parseInt( tile[i], 10 );
+            }
+
 	    // console.log(tile);
-          for (var i = 0; i < 3; i++)
-	        {
+	    for (var i = 0; i < 3; i++)
+	    {
 		// console.log(tile[i]);
 		// console.log(Math.round(puzzle[r][c][i]));
-		        solved = solved && tile[i] == Math.round(puzzle[r][c][i]);
-          }
-          if (!solved)
-          {
-	           break out;
-          }
-	       }
+		solved = solved && Math.abs(tile[i] - puzzle[r][c][i]) <= 2;
+            }
+
+	    if (!solved)
+            {
+		console.log(puzzle[r][c][0]);
+		console.log(puzzle[r][c][1]);
+		console.log(puzzle[r][c][2]);
+		console.log(tile);
+		console.log("(r, c) : ( "+ r + ", "+ c  + " )" );
+	        break out;
+            }
+	}
     }
-    console.log(solved)
-    solved = true
+
+    
+    //console.log(solved)
+    //solved = true
     if (solved)
     {
-      modalBut = document.getElementById('check')
-      console.log(modalBut)
-      numMoves = document.getElementsByClassName('modal-body')[0]
-      index = numMoves.innerHTML.indexOf('Moves')
-      numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
+	modalBut = document.getElementById('check')
+	console.log(modalBut)
+	numMoves = document.getElementsByClassName('modal-body')[0]
+	index = numMoves.innerHTML.indexOf('Moves')
+	numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
 
     }
     else
     {
-	     resp.innerHTML = "Wrong! try again";
+	resp.innerHTML = "Wrong! try again";
     }
-
+    
     return solved
 }
 
 // will handle swaping two clicked tiles
 var swap = function(e)
 {
-    // ADD OPTION TO UNCLICK TILES
-
     // makes clicked tile visible to the user
     clicked[0].style.border = "5px solid white";
 
