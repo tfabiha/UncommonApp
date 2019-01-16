@@ -127,10 +127,6 @@ def genWeather():
         columns = 8
         palette = weatherColors.makePuzOnWeather()
         puzzle = colors.puzzleGen(rows,columns,palette[0],palette[1],palette[2],palette[3])
-        print(palette[0])
-        print(palette[1])
-        print(palette[2])
-        print(palette[3])
         return render_template('home.html',
                                Name = name,
                                colors = puzzle,
@@ -203,8 +199,8 @@ def save():
     if 'username' not in session:
         return redirect(url_for('home'))
     dbString = request.form['dbStr']
-    print(dbString)
-    #update.updatedLikedPuzzles(session['username'],dbString)
+    moves = request.form['moves']
+    update.addPuzzle(dbString,moves)
     return redirect(url_for('authPage'))
 
 #-------------------------------------------customize--------------------------------------------------------
@@ -270,9 +266,9 @@ def play():
                            LL = colorBL, # lower-left color
                            LR = colorBR, # lower-right color
                            puzzleInfo = dbString)
-        
-        
-        
+
+
+
     else:
         return redirect(url_for('home'))
 
