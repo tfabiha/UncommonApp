@@ -23,7 +23,7 @@ the puzzles of other players, and compete for high scores.
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
+==============================================================
 michelleT -- 2019-01-03 20:12
 --------------------------------------------------------------
 - created the devlog for our final project woo!
@@ -41,23 +41,36 @@ Revised Design Doc:
 - included reasoning for choosing bootstrap
 - gave name "WeLoveHue" to project
 ==============================================================
-dennisC -- 2019-01-09 20:32
+dennisC -- 2019-01-09 12:13
 --------------------------------------------------------------
 - created a test page where I was able to swap boxes of color
   around
 - the first box clicked also has a black border as indicator
   of it being selected
 ==============================================================
+addisonH -- 2019-01-09 12:32
+--------------------------------------------------------------
+- added the templates for high scores
+- created a home.html
+==============================================================
 fabihaT -- 2019-01-09 23:35
 --------------------------------------------------------------
 - changed reasoning for FEF choice
 - closed issue
 ==============================================================
-dennisC -- 2019-01-10 22:56
+dennisC -- 2019-01-10 12:36
 --------------------------------------------------------------
 - made a puzzle generator, but all the colors are random
   atm
 - removed spaces between colors
+==============================================================
+addisonH -- 2019-01-10 13:46
+--------------------------------------------------------------
+- css for home, created login
+==============================================================
+michelleT -- 2019-01-10 20:56
+--------------------------------------------------------------
+- created db_builder.py and insert into userInfo, Puzzles, and log
 ==============================================================
 fabihaT -- 2019-01-10 23:48
 --------------------------------------------------------------
@@ -67,17 +80,61 @@ fabihaT -- 2019-01-10 23:48
   and testpuzzle.html
 - fixed merge conflict
 ==============================================================
+michelleT -- 2019-01-11 12:38
+--------------------------------------------------------------
+- worked on averageMoves for both user and puzzles
+- updated functions that needed puzzleID
+==============================================================
+addisonH -- 2019-01-11 13:20
+--------------------------------------------------------------
+- more css, fixed login, incorporated create with weather/home
+==============================================================
 dennisC -- 2019-01-11 21:20
 --------------------------------------------------------------
 - used ipapi, airvisual, and colourlovers APIs to create a set
 of four colors that are based on the weather of the location
 of the user
 ==============================================================
+addisonH -- 2019-01-12 18:10
+--------------------------------------------------------------
+- create account & login work, brings to weather puzzle
+==============================================================
+michelleT -- 2019-01-13 8:00
+--------------------------------------------------------------
+- fixed high scores for moves/changed liked puzzles to all puzzles
+==============================================================
 dennisC -- 2019-01-13 21:00
 --------------------------------------------------------------
 - made borders on puzzle locked and have a dot in the middle
 of the square
 ==============================================================
+michelleT -- 2019-01-14 10:05
+--------------------------------------------------------------
+- updated README.md
+- built better sorting functions (separate to updater and builder)
+==============================================================
+addisonH -- 2019-01-14 1:05
+--------------------------------------------------------------
+- css, flashed messages, customize, and buttons
+==============================================================
 dennisC -- 2019-01-14 21:05
 --------------------------------------------------------------
 - made framework for liked puzzles
+==============================================================
+michelleT -- 2019-01-15 12:39
+--------------------------------------------------------------
+- did formatting for returning all of the puzzles
+- worked on save for the database
+==============================================================
+addisonH -- 2019-01-15 1:15
+--------------------------------------------------------------
+- did the customize & set up buttons for preview and save
+==============================================================
+dennisC -- 2019-01-15 20:05
+--------------------------------------------------------------
+- rendered string into a puzzle
+==============================================================
+fabihaT -- 2019-01-15 23:41
+--------------------------------------------------------------
+- got preview to work
+- updated README for new apis
