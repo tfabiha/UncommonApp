@@ -8,8 +8,9 @@
 {% block content %}
 <div style="padding:50px 0; width:20%; display:inline-block; float:left;">
   <div class="heading"> Customize </div>
-  <form action="/puzzles" method="POST">
-    <div class="loginBackground text-center">
+  
+  <div class="loginBackground text-center">
+    <form action="/puzzles" method="POST">
       <div id="flashedMessages">
 	{% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
@@ -22,11 +23,11 @@
 	  Size: <br>
 	</div>
 	<select name="size">
-	  <option value="4"> 4x4 </option>
-	  <option value="4"> 5x5 </option>
-	  <option value="4"> 6x6 </option>
-	  <option value="4"> 7x7 </option>
-	  <option value="4"> 8x8 </option>
+	  <option value="4x4"> 4x4 </option>
+	  <option value="5x5"> 5x5 </option>
+	  <option value="6x6"> 6x6 </option>
+	  <option value="7x7"> 7x7 </option>
+	  <option value="8x8"> 8x8 </option>
 	</select>
       </div>
       <br>
@@ -79,16 +80,23 @@
 	    {% endfor %}
 	  </ul>
 	</div>
-	<div id="color">
-	  <button class="btn btn-secondary" name="preview"> Preview </button>
-	  <button class="btn btn-secondary" name="submit"> Create </button>
-	</div>
       </div>
+    </form>
+
+    <div id="color">
+      <button class="btn btn-secondary" name="preview"> Preview </button>
+      <button class="btn btn-secondary" name="submit"> Create </button>
     </div>
-  </form>
+
+  </div>
+  
+
 </div>
-<div id="preview">
+
+<div id="preview-tiles">
 </div>
+
+
 <script src="/static/customize.js"></script>
 
 {% endblock %}
