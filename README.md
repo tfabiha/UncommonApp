@@ -10,9 +10,9 @@ Using RESTful APIs we will mimic the game “i love hue.” People will be given
 
 API Name | Link | Key & Quota | How to Create Key
 --- | --- | --- | ---
-COLOURlovers API | TBD  | no key needed and unlimited quotas! | N/A
-IP Identifier | http://ip-api.com | tbd! | Create an account and on the dashboard where it says API key, follow those instructions.
-Weather API | TBD | no key needed and unlimited quotas! | N/A
+COLOURlovers API | https://www.colourlovers.com/api  | no key needed and unlimited quotas! | N/A
+IP Identifier | http://ip-api.com | no key needed and unlimited quotas! | N/A
+Weather API | https://www.airvisual.com/air-pollution-data-api | no key needed and unlimited quotas! | Create an account and on the dashboard where it says API key, follow those instructions.
 
 **Where to place your API**
 1) Please put your API key in a file named ```keys.json``` with a key value of weather.
