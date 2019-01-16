@@ -36,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			//randomize();
+			randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });
@@ -211,7 +211,7 @@ var swap = function(e)
 	clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
 	clicked[1].style.backgroundColor = color;
 	clicked[0].style.border = "0px";
-	
+
 
 	if ( clicked[0].style.backgroundColor != clicked[1].style.backgroundColor)
 	{
