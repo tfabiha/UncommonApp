@@ -53,3 +53,10 @@ body {
 #flashedMessages {
     color:red;
 }
+
+.moves {
+    font-weight: bold;
+    color: #6b6a69;
+    font-size: 40px;
+    text-align: center;
+}

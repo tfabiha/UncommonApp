@@ -123,7 +123,7 @@ window.onload = function()
 		    td.style = "padding: 0; margin: 0";
 
 		    var div = document.createElement("div");
-		    div.style = "width: 20px; height: 20px; background-color: rgb(" + puzzle[i][j][0] + "," + puzzle[i][j][1]  + "," + puzzle[i][j][2] + "); padding: 10px; box-sizing: border-box; vertical-align: middle; text-align: center; font-size: 40px";
+		    div.style = "width: 70px; height: 70px; background-color: rgb(" + puzzle[i][j][0] + "," + puzzle[i][j][1]  + "," + puzzle[i][j][2] + "); padding: 10px; box-sizing: border-box; vertical-align: middle; text-align: center; font-size: 40px";
 
 		    td.appendChild( div );
 		    tr.appendChild( td ); 

@@ -91,8 +91,7 @@ ul {
     width:30px;
 }
 
-#preview {
-    background-color: blue;
+#preview-tiles {
     width:70%;
     display:inline-block;
     margin-top:140px;
