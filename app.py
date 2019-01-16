@@ -148,8 +148,8 @@ def genWeather():
                                                       palette[3][1],
                                                       palette[3][2])) # lower-right color
 #-------------------------------------------create puzzle--------------------------------------------------------
-@app.route('/create',methods = ['GET','POST'])
-def create():
+@app.route('/random',methods = ['GET','POST'])
+def random():
     if 'username' not in session:
         return redirect(url_for('home'))
     rows = 8

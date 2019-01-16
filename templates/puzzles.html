@@ -1,4 +1,41 @@
 {% extends 'base.html' %}
 
-{% block title %} Puzzles
+{% block head %}
+<link rel="stylesheet" type="text/css" href="../static/UncommonApp.css">
+<meta charset = 'utf-8'/>
+<title>
+  Puzzles
+</title>
+{% endblock %}
+
+{% block content %}
+{% for puzzle in puzzles %}
+<div class="puzzle">
+  <table style = "cellpadding: 0;
+		  cellspacing: 0;
+		  border: 0;
+		  border-collapse: collapse;">
+
+    {% for row in range( puzzle|length ) %}
+    <tr>
+
+      {% for column in range( puzzle[row]|length ) %}
+      <td style = "padding: 0; margin: 0;">
+      	<div style = "width: 20px;
+      		      height: 20px;
+      		      background-color: rgb({{puzzle[row][column][0]}},
+      		      {{puzzle[row][column][1]}},
+      		      {{puzzle[row][column][2]}});
+      		      padding: 10px;
+                box-sizing: border-box;
+                vertical-align: middle;
+                text-align: center;
+                font-size: 40px">
+	</div>
+      </td>
+      {% endfor %}
+
+    </tr>
+    {% endfor %}
+    </table>
 {% endblock %}
