@@ -120,7 +120,7 @@ def genWeather():
     it on the home page
     '''
     if 'username' not in session:
-        redirect(url_for('home'))
+        return redirect(url_for('home'))
     else:
         name = session['username']
         rows = 8
@@ -147,7 +147,7 @@ def genWeather():
 @app.route('/create',methods = ['GET','POST'])
 def create():
     if 'username' not in session:
-        redirect(url_for('home'))
+        return redirect(url_for('home'))
     rows = 8
     columns = 8
 
@@ -193,6 +193,17 @@ def puzzles():
     else:
         return redirect(url_for('home'))
 
+#-------------------------------------------save puzzle--------------------------------------------------------
+@app.route('/save', methods = ["GET","POST"])
+def save():
+    if 'username' not in session:
+        return redirect(url_for('home'))
+    dbString = request.form['dbStr']
+    print(dbString)
+    #update.updatedLikedPuzzles(session['username'],dbString)
+    return redirect(url_for('authPage'))
+
+#-------------------------------------------customize--------------------------------------------------------
 @app.route('/customize',methods = ["GET","POST"])
 def custom():
     if 'username' in session:

@@ -29,7 +29,6 @@ var addBtn= function(e) {
     var newB = document.getElementById('check');
     newB.addEventListener('click',solvedstate);
     newB.style.display = "inline-block"
-    console.log(newB.style)
     buttons.appendChild(newB);
 };
 
@@ -37,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			randomize();
+			//randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });
@@ -181,13 +180,15 @@ var solvedstate = function(e)
 
     if (solved)
     {
-	
-	console.log("true");
+      numMoves = document.getElementsByClassName('modal-body')[0]
+      console.log(numMoves.innerHTML)
+      index = numMoves.innerHTML.indexOf('Moves')
+      numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
     }
     else
     {
-	resp.innerHTML = "Wrong! try again";
-	console.log("false");
+	     resp.innerHTML = "Wrong! try again";
+	      console.log("false");
     }
 
     return solved

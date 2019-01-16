@@ -30,12 +30,18 @@ def getWeather():
         location[2] = 'USA'
     if location[0] == 'Brooklyn' or location[0] == 'Manhattan' or location[0] == 'Queens' or location[0] == 'Bronx' or location[0] == 'Staten Island':
         location[0] = 'New York'
-    url = 'http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=%s' % (urllib.parse.quote(location[0]),urllib.parse.quote(location[1]),urllib.parse.quote(location[2]),data['weather'])
-    print(url)
-    response = urlopen(url)
-    response = response.read()
-    info = json.loads(response)
-    weather = info['data']['current']['weather']['ic']
+    try:
+        url = 'http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=%s' % (urllib.parse.quote(location[0]),urllib.parse.quote(location[1]),urllib.parse.quote(location[2]),data['weather'])
+        response = urlopen(url)
+        response = response.read()
+        info = json.loads(response)
+        weather = info['data']['current']['weather']['ic']
+    except:
+        url = 'http://api.airvisual.com/v2/city?city=New%20York&state=New%20York&country=USA&key=' % (data['weather'])
+        response = urlopen(url)
+        response = response.read()
+        info = json.loads(response)
+        weather = info['data']['current']['weather']['ic']
     keyword = ""
     if weather == '01d' or weather == '02d':
         keyword = "sun"
