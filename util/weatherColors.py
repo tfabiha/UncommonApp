@@ -6,13 +6,18 @@ def getLocation():
     '''
     Gets the location of the user using ipapi
     '''
-    url = 'https://ipapi.co/json'
-    response = urlopen(url)
-    response = response.read()
-    info = json.loads(response)
-    city = info['city']
-    state = info['region']
-    country = info['country']
+    try:
+        url = 'https://ipapi.co/json'
+        response = urlopen(url)
+        response = response.read()
+        info = json.loads(response)
+        city = info['city']
+        state = info['region']
+        country = info['country']
+    except:
+        city ='New York'
+        state = "New York"
+        country = "USA"
     return city,state,country
 def getWeather():
     '''
