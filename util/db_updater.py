@@ -62,7 +62,14 @@ def addLog(username,moves,puzzleID):
 # addLog("user1", 20, 1)
 # addLog("user1", 12, 1)
 
-
+'''
+updateAverageMovesUser(username,moves,puzzleID)
+params:username,moves,puzzleID
+username: the user who has solved the puzzle
+moves: the number of moves they took to complete a given puzzle
+puzzleID: the id of the puzzle that was just solved
+function updates the average moves a user takes to complete all of his/her puzzles
+'''
 # when you complete a puzzle, updates average moves for the player and for the puzzle itself
 def updateAverageMovesUser(username,moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
@@ -82,7 +89,13 @@ def updateAverageMovesUser(username,moves,puzzleID):
 
 #print(updateAverageMovesUser("user1", 5, 1))
 
-
+'''
+updateAverageMovesPuzzle(moves,puzzleID)
+params:moves,puzzleID
+moves: the number of moves they took to complete a given puzzle
+puzzleID: the id of the puzzle that was just solved
+function updates the average moves a user takes to complete a given puzzle
+'''
 def updateAverageMovesPuzzle(moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -97,17 +110,24 @@ def updateAverageMovesPuzzle(moves,puzzleID):
 #print (updateAverageMovesPuzzle(12, 1))
 #print ("hi michelle")
 
-def updatedLikedPuzzles(username, puzzleID):
-    DB_FILE="./data/uncommonApp.db"
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    list = getLikedPuzzles(username) + str(puzzleID) + ","
-    command = "UPDATE usersInfo SET likedPuzzles = '" + str(list) + "'WHERE usersInfo.username = '" + username + "';" #updates moves
-    c.execute(command)
-    list  = c.fetchall()
-    db.commit()
-    db.close()
-    return ("finished updatelikedpuzzles")
+# '''
+# updatedLikedPuzzles(username, puzzleID)
+# params:username,puzzleID
+# moves: the number of moves they took to complete a given puzzle
+# puzzleID: the id of the puzzle that was just solved
+# function updates the average moves a user takes to complete a given puzzle
+# '''
+# def updatedLikedPuzzles(username, puzzleID):
+#     DB_FILE="./data/uncommonApp.db"
+#     db = sqlite3.connect(DB_FILE)
+#     c = db.cursor()
+#     list = getLikedPuzzles(username) + str(puzzleID) + ","
+#     command = "UPDATE usersInfo SET likedPuzzles = '" + str(list) + "'WHERE usersInfo.username = '" + username + "';" #updates moves
+#     c.execute(command)
+#     list  = c.fetchall()
+#     db.commit()
+#     db.close()
+#     return ("finished updatelikedpuzzles")
 # print(updatedLikedPuzzles("user1", 5))
 # print(":)")
 #
