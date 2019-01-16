@@ -127,6 +127,10 @@ def genWeather():
         columns = 8
         palette = weatherColors.makePuzOnWeather()
         puzzle = colors.puzzleGen(rows,columns,palette[0],palette[1],palette[2],palette[3])
+        print(palette[0])
+        print(palette[1])
+        print(palette[2])
+        print(palette[3])
         return render_template('home.html',
                                Name = name,
                                colors = puzzle,
@@ -240,16 +244,21 @@ def custom():
 def play():
     if 'username' in session:
         size = request.form['size']
-        rows = int(size[0])
-        columns = int(size[1])
+        size1=size.split('x')
+        rows = int(size1[0])
+        columns = int(size1[1])
         colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
-        print('colorTL' + colorTL)
+        colorTL = colorTL.split(",")
+        colorTL = [int(i) for i in colorTL]
         colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
-        print('colorTR' + colorTR)
+        colorTR = colorTR.split(",")
+        colorTR = [int(i) for i in colorTR]
         colorBL = request.form['blcolor'][4:len(request.form['blcolor'])-1]
-        print('colorBL' + colorBL)
+        colorBL = colorBL.split(",")
+        colorBL = [int(i) for i in colorBL]
         colorBR = request.form['brcolor'][4:len(request.form['brcolor'])-1]
-        print('colorBR' + colorBR)
+        colorBR = colorBR.split(",")
+        colorBR = [int(i) for i in colorBR]
         puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
         dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
         dbString = "".join(dbString.split(" "))

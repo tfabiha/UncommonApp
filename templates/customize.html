@@ -10,7 +10,7 @@
   <div class="heading"> Customize </div>
   
   <div class="loginBackground text-center">
-    <form action="/puzzles" method="POST">
+    <form action="/play" id="custom" method="POST">
       <div id="flashedMessages">
 	{% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
@@ -85,7 +85,7 @@
 
     <div id="color">
       <button class="btn btn-secondary" name="preview"> Preview </button>
-      <button class="btn btn-secondary" name="submit"> Create </button>
+      <button class="btn btn-secondary" form="custom" value="submit"> Create </button>
     </div>
 
   </div>
