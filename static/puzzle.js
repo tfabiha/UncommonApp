@@ -211,10 +211,12 @@ var swap = function(e)
 	clicked[0].style.backgroundColor = clicked[1].style.backgroundColor;
 	clicked[1].style.backgroundColor = color;
 	clicked[0].style.border = "0px";
+	
 
 	if ( clicked[0].style.backgroundColor != clicked[1].style.backgroundColor)
 	{
 	    moves += 1;
+	    totalmoves();
 	}
 
 	clicked = [];
@@ -229,6 +231,8 @@ var randint = function(e)
 
 var randomize = function(e)
 {
+    moves = 0;
+    totalmoves();
     for (var i = 0; i < 1000; i ++)
     {
 	var tile0_coor = [randint(row -2) + 1, randint(column - 2) + 1];
@@ -245,4 +249,10 @@ var randomize = function(e)
 	tile0.style.backgroundColor = tile1.style.backgroundColor;
 	tile1.style.backgroundColor = color;
     }
-}
+};
+
+var totalmoves = function(e) {
+    var move = document.getElementsByClassName("moves")[0];
+    console.log(move);
+    move.innerHTML = "Moves: " + moves;
+};
