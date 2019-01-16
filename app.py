@@ -208,6 +208,7 @@ def save():
 def custom():
     if 'username' in session:
         palette=colors.getpalette(4)
+        print(palette[0])
         colorList0=[]
         i=0;
         while i<len(palette):
@@ -232,6 +233,37 @@ def custom():
             colorList3.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
         return render_template('customize.html', colors0=colorList0, colors1=colorList1, colors2=colorList2, colors3=colorList3)
+    else:
+        return redirect(url_for('home'))
+
+@app.route('/play', methods=["GET","POST"])
+def play():
+    if 'username' in session:
+        size = request.form['size']
+        rows = int(size[0])
+        columns = int(size[1])
+        colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
+        print('colorTL' + colorTL)
+        colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
+        print('colorTR' + colorTR)
+        colorBL = request.form['blcolor'][4:len(request.form['blcolor'])-1]
+        print('colorBL' + colorBL)
+        colorBR = request.form['brcolor'][4:len(request.form['brcolor'])-1]
+        print('colorBR' + colorBR)
+        puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
+        dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
+        dbString = "".join(dbString.split(" "))
+        return render_template('testpuzzle.html',
+                           colors = puzzle,
+                           tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                           UL = colorTL, # upper-left color
+                           UR = colorTR, # upper-right color
+                           LL = colorBL, # lower-left color
+                           LR = colorBR, # lower-right color
+                           puzzleInfo = dbString)
+        
+        
+        
     else:
         return redirect(url_for('home'))
 
