@@ -46,7 +46,7 @@ def getLikedPuzzles(username):
     #return ("finished getlikedpuzzles")
 #print(getLikedPuzzles("user1"))
 
-def getPuzzle(puzzleID):
+def getPuzzleContent(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -62,7 +62,7 @@ def getPuzzle(puzzleID):
     return (puzzle)
 #print (getPuzzle(1))
 
-def getPuzzle(puzzle_description):
+def getPuzzleID(puzzle_description):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
