@@ -89,11 +89,17 @@ addisonH -- 2019-01-11 13:20
 --------------------------------------------------------------
 - more css, fixed login, incorporated create with weather/home
 ==============================================================
+fabihaT -- 2019-01-11 15:28
+--------------------------------------------------------------
+- got color scheme to load on /random
+- fixed merge conflict
+- added api usage for palettes
+==============================================================
 dennisC -- 2019-01-11 21:20
 --------------------------------------------------------------
 - used ipapi, airvisual, and colourlovers APIs to create a set
-of four colors that are based on the weather of the location
-of the user
+  of four colors that are based on the weather of the location
+  of the user
 ==============================================================
 addisonH -- 2019-01-12 18:10
 --------------------------------------------------------------
@@ -106,7 +112,13 @@ michelleT -- 2019-01-13 8:00
 dennisC -- 2019-01-13 21:00
 --------------------------------------------------------------
 - made borders on puzzle locked and have a dot in the middle
-of the square
+  of the square
+==============================================================
+fabihaT -- 2019-01-13 22:00
+--------------------------------------------------------------
+- added randomization to /random
+- added solved state of puzzle
+- fixed bugs in database
 ==============================================================
 michelleT -- 2019-01-14 10:05
 --------------------------------------------------------------
@@ -138,3 +150,13 @@ fabihaT -- 2019-01-15 23:41
 --------------------------------------------------------------
 - got preview to work
 - updated README for new apis
+==============================================================
+fabihaT -- 2019-01-16 15:33
+--------------------------------------------------------------
+- fixed bugs in randomize
+- fixed bugs in check
+==============================================================
+fabihaT -- 2019-01-17 15:34
+--------------------------------------------------------------
+- added refresh buttons
+- reformatted code
