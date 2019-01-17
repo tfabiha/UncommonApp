@@ -16,6 +16,7 @@ def getAllPuzzles():
 
 print(getAllPuzzles())
 
+
 def getMovesUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -89,6 +90,33 @@ def getMovesPuzzle(puzzleID):
     db.commit()
     db.close()
     return(oldScore)
+
+def MgetMovesPuzzle(puzzleID):
+    DB_FILE="./data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT moves FROM logs WHERE puzzles.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
+    c.execute(command)
+    oldScore = c.fetchone()
+    db.commit()
+    db.close()
+    return(oldScore)
+
+def highScores(puzzleID):
+    DB_FILE="data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    # command = "SELECT score, username from users"
+    command = "SELECT moves FROM logs WHERE logs.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
+    c.execute(command)
+    try:
+        scores = c.fetchall() #retrieves the scores in descending order
+        scores.sort(reverse=True)
+        return scores[0]
+
+    except:
+        return 0
+
 
 def getPuzzlePlayedPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"

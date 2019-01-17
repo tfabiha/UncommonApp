@@ -111,6 +111,8 @@ def updateAverageMovesPuzzle(moves,puzzleID):
     c.execute(command)
     db.commit()
     db.close()
+
+
 #print (updateAverageMovesPuzzle(12, 1))
 #print ("hi michelle")
 

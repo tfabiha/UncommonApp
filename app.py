@@ -111,12 +111,6 @@ def added():
             return redirect(url_for('reg'))
     except:
         return redirect(url_for('home'))
-#-------------------------------------------tutorial puzzle--------------------------------------------------------
-
-@app.route('/completed', methods=["GET","POST"])
-def completed():
-    flash('Tutorial Complete')
-    return redirect(url_for('home'))
 
 #-------------------------------------------featured puzzle--------------------------------------------------------
 @app.route('/weatherPuz',methods = ['GET','POST'])
@@ -181,10 +175,27 @@ def random():
                                                   palette[3][1],
                                                   palette[3][2]), # lower-right color
                            puzzleInfo = dbString)
+                           # avgMoves = search.highScores(search.getPuzzleID(dbString)))
+                           #
+                           # updateAverageMovesPuzzle(moves,puzzleID):
 #-------------------------------------------liked puzzles page--------------------------------------------------------
 @app.route('/puzzles', methods = ["GET","POST"])
 def puzzles():
     if 'username' in session: #if user is logged in
+
+        # likedPuz = db_search.getLikedPuzzles(session['username'])
+        # puzzles = []
+        # for puz in likedPuz:
+        #     puzzle = puzzle.split(';')
+        #     rows = int(puzzle[0])
+        #     cols = int(puzzle[1])
+        #     ULC = json.loads(puzzle[2])
+        #     URC = json.loads(puzzle[3])
+        #     LLC = json.loads(puzzle[4])
+        #     LRC = json.loads(puzzle[5])
+        #     puzzle = colors.puzzleGen(rows,cols,ULC,URC,LLC,LRC)
+        #     puzzles.append(puzzle)
+
         puzzles=search.getAllPuzzles()
         i = 0;
         while i < len(puzzles):
@@ -206,6 +217,7 @@ def save():
     if dbString not in search.getAllPuzzles():
         update.addPuzzle(dbString,moves)
         puzId = search.getPuzzleID(dbString)
+        update.updateAverageMovesPuzzle(moves,puzId)
         update.addLog(session['username'],moves,puzId)
     return redirect(url_for('authPage'))
 
@@ -213,6 +225,8 @@ def save():
 @app.route('/customize',methods = ["GET","POST"])
 def custom():
     if 'username' in session:
+        #palette=colors.getpalette(4)
+        #print(palette[0])
         colorList = [[],[],[],[]]
 
         for i in range(4):
@@ -359,6 +373,12 @@ def tutorial():
                                    LR = "{},{},{}".format(colorBR[0],
                                                   colorBR[1],
                                                   colorBR[2])) # lower-right color)
+
+@app.route('/completed', methods=["GET","POST"])
+def completed():
+    flash('Tutorial Complete')
+    return redirect(url_for('home'))
+
 
 
 
