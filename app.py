@@ -177,18 +177,6 @@ def random():
 @app.route('/puzzles', methods = ["GET","POST"])
 def puzzles():
     if 'username' in session: #if user is logged in
-        # likedPuz = db_search.getLikedPuzzles(session['username'])
-        # puzzles = []
-        # for puz in likedPuz:
-        #     puzzle = puzzle.split(';')
-        #     rows = int(puzzle[0])
-        #     cols = int(puzzle[1])
-        #     ULC = json.loads(puzzle[2])
-        #     URC = json.loads(puzzle[3])
-        #     LLC = json.loads(puzzle[4])
-        #     LRC = json.loads(puzzle[5])
-        #     puzzle = colors.puzzleGen(rows,cols,ULC,URC,LLC,LRC)
-        #     puzzles.append(puzzle)
         return render_template('puzzles.html',puzzles = puzzles)
     else:
         return redirect(url_for('home'))
@@ -200,7 +188,10 @@ def save():
         return redirect(url_for('home'))
     dbString = request.form['dbStr']
     moves = request.form['moves']
-    update.addPuzzle(dbString,moves)
+    if dbString not in search.getAllPuzzles():
+        update.addPuzzle(dbString,moves)
+        print("asd")
+    update.addLog(session['username'],moves,search.getPuzzleID(dbString))
     return redirect(url_for('authPage'))
 
 #-------------------------------------------customize--------------------------------------------------------
