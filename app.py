@@ -152,7 +152,7 @@ def random():
         return redirect(url_for('home'))
     rows = 8
     columns = 8
-
+ 
     palette = colors.getpalette(4)
     puzzle = colors.puzzleGen(rows, columns,
                               palette[0], palette[1],
@@ -232,8 +232,8 @@ def custom():
 
             for j in range(4):
                 colorList[i].append('rgb('+str(palette[j][0]) +","+str(palette[j][1])+"," +str(palette[j][2]) +')')
-                
-        
+
+
         """
         colorList0=[]
         i=0
@@ -302,7 +302,7 @@ def play():
                                                   colorBL[2]), # lower-left color
                                    LR = "{},{},{}".format(colorBR[0],
                                                   colorBR[1],
-                                                  colorBR[2]), # lower-right color 
+                                                  colorBR[2]), # lower-right color
                                    puzzleInfo = dbString)
         except:
             value = request.form['value']
@@ -342,8 +342,8 @@ def play():
                                                   colorBR[1],
                                                   colorBR[2]), # lower-right color
                                    puzzleInfo = dbString)
-        
-            
+
+
     else:
         return redirect(url_for('home'))
 
@@ -376,9 +376,9 @@ def tutorial():
 def completed():
     flash('Tutorial Complete')
     return redirect(url_for('home'))
-    
-    
-    
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

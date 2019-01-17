@@ -2,13 +2,20 @@
 var sq = document.getElementsByClassName("box");
 
 var refresh = document.getElementById("randpuzz");
-console.log("refresh")
-refresh.addEventListener("click", function()
-			 {
-			     reloaded();
-			     //location.reload();
-			     //console.log("reloaded");
-			 })
+refresh.addEventListener("click", function(e)
+		    {
+			resp.innerHTML = "";
+			randomize();
+			sq.style.display = "none";
+			addBtn();
+		    });
+// console.log("refresh")
+// refresh.addEventListener("click", function()
+// 			 {
+// 			     reloaded();
+// 			     //location.reload();
+// 			     //console.log("reloaded");
+// 			 })
 
 var reloaded = function(e)
 {
