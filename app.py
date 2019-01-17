@@ -276,7 +276,7 @@ def play():
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                                   UL = ',',join(colorTL), # upper-left color
+                                   UL = ','.join(colorTL), # upper-left color
                                    UR = ','.join(colorTR), # upper-right color
                                    LL = ','.join(colorBL), # lower-left color
                                    LR = ','.join(colorBR), # lower-right color
