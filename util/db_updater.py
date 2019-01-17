@@ -79,9 +79,9 @@ def updateAverageMovesUser(username,moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    newMoves= getMovesUser(username) + moves
+    newMoves= search.getMovesUser(username) + moves
     print (newMoves)
-    numPlayed = getPuzzlePlayedUser(username) + 1.0
+    numPlayed = search.getPuzzlePlayedUser(username) + 1.0
     print (numPlayed)
     newAverage = newMoves / numPlayed
     print (newAverage)
@@ -104,8 +104,8 @@ def updateAverageMovesPuzzle(moves,puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    newMoves= getMovesPuzzle(puzzleID) + moves
-    numPlayed = getPuzzlePlayedPuzzle(puzzleID) + 1.0
+    newMoves= search.getMovesPuzzle(puzzleID) + int(moves)
+    numPlayed = search.getPuzzlePlayedPuzzle(puzzleID) + 1.0
     newAverage = newMoves / numPlayed
     command = "UPDATE puzzles SET averageMoves = '" + str(newAverage) + "'WHERE puzzles.puzzleID = '" + str(puzzleID) + "';" #updates moves
     c.execute(command)
