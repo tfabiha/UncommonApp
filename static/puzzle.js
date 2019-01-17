@@ -36,7 +36,7 @@ sq = document.getElementsByClassName("rand")[0];
 sq.addEventListener("click", function(e)
 		    {
 			resp.innerHTML = "";
-			//randomize();
+			randomize();
 			sq.style.display = "none";
 			addBtn();
 		    });

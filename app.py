@@ -127,6 +127,8 @@ def genWeather():
         columns = 8
         palette = weatherColors.makePuzOnWeather()
         puzzle = colors.puzzleGen(rows,columns,palette[0],palette[1],palette[2],palette[3])
+        print('-------weather----------')
+        print("{},{},{}".format(palette[0][0],palette[0][1],palette[0][2]))
         return render_template('home.html',
                                Name = name,
                                colors = puzzle,
@@ -273,50 +275,59 @@ def play():
             puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
-            print(puzzle)
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                                   UL = ','.join(str(colorTL)), # upper-left color
-                                   UR = ','.join(str(colorTR)), # upper-right color
-                                   LL = ','.join(str(colorBL)), # lower-left color
-                                   LR = ','.join(str(colorBR)), # lower-right color
+                                   UL = "{},{},{}".format(colorTL[0],
+                                                  colorTL[1],
+                                                  colorTL[2]), # upper-left color
+                                   UR = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # upper-right color
+                                   LL = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # lower-left color
+                                   LR = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # lower-right color 
                                    puzzleInfo = dbString)
         except:
             value = request.form['value']
-            print(value)
             rows = int(value[0])
             columns = int(value[2])
             colorTL = value[value.find("[")+1:value.find("]")]
             colorTL = colorTL.split(",")
             colorTL= [int(i) for i in colorTL]
-            print(colorTL)
             value = value[value.find("]")+1:]
             colorTR = value[value.find("[")+1:value.find("]")]
             colorTR = colorTR.split(",")
             colorTR= [int(i) for i in colorTR]
-            print(colorTR)
             value = value[value.find("]")+1:]
             colorBL = value[value.find("[")+1:value.find("]")]
             colorBL = colorBL.split(",")
-            print(colorBL)
             colorBL= [int(i) for i in colorBL]
-            print(colorBL)
             value = value[value.find("]")+1:]
             colorBR = value[value.find("[")+1:value.find("]")]
             colorBR = colorBR.split(",")
             colorBR= [int(i) for i in colorBR]
-            print(colorBR)
             puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                                   UL = ','.join(str(colorTL)), # upper-left color
-                                   UR = ','.join(str(colorTR)), # upper-right color
-                                   LL = ','.join(str(colorBL)), # lower-left color
-                                   LR = ','.join(str(colorBR)), # lower-right color
+                                   UL = "{},{},{}".format(colorTL[0],
+                                                  colorTL[1],
+                                                  colorTL[2]), # upper-left color
+                                   UR = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # upper-right color
+                                   LL = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # lower-left color
+                                   LR = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # lower-right color
                                    puzzleInfo = dbString)
         
             
