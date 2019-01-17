@@ -172,7 +172,8 @@ def random():
                            LR = "{},{},{}".format(palette[3][0],
                                                   palette[3][1],
                                                   palette[3][2]), # lower-right color
-                           puzzleInfo = dbString)
+                           puzzleInfo = dbString,
+                           avgMoves = 0)
 #-------------------------------------------liked puzzles page--------------------------------------------------------
 @app.route('/puzzles', methods = ["GET","POST"])
 def puzzles():
@@ -205,10 +206,9 @@ def save():
     moves = request.form['moves']
     if dbString not in search.getAllPuzzles():
         update.addPuzzle(dbString,moves)
-        print("ADDED IT\n\n\n\n ")
-        print(repr(dbString))
-        # print(search.getPuzzleID(str(dbString)))
-    update.addLog(session['username'],moves,search.getPuzzleID(dbString))
+    puzId = search.getPuzzleID(dbString)
+    update.updateAverageMovesPuzzle(moves,puzId)
+    update.addLog(session['username'],moves,puzId)
     return redirect(url_for('authPage'))
 
 #-------------------------------------------customize--------------------------------------------------------
@@ -254,6 +254,7 @@ def play():
         colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
         colorTL = colorTL.split(",")
         colorTL = [int(i) for i in colorTL]
+        print(colorTL)
         colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
         colorTR = colorTR.split(",")
         colorTR = [int(i) for i in colorTR]
@@ -266,13 +267,22 @@ def play():
         puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
         dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
         dbString = "".join(dbString.split(" "))
+        print(dbString)
         return render_template('testpuzzle.html',
                            colors = puzzle,
                            tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                           UL = colorTL, # upper-left color
-                           UR = colorTR, # upper-right color
-                           LL = colorBL, # lower-left color
-                           LR = colorBR, # lower-right color
+                           UL = "{},{},{}".format(colorTL[0],
+                                                  colorTL[1],
+                                                  colorTL[2]),# upper-left color
+                           UR  ="{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # upper-right color
+                           LL = "{},{},{}".format(colorBL[0],
+                                                  colorBL[1],
+                                                  colorBL[2]), # lower-left color
+                           LR = "{},{},{}".format(colorBR[0],
+                                                  colorBR[1],
+                                                  colorBR[2]), # lower-right color
                            puzzleInfo = dbString)
 
 
