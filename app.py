@@ -56,7 +56,7 @@ def authPage():
             highScores.append(scores[counter][0])
             userNames.append(scores[counter][1])
             counter += 1
-'''
+        '''
         return redirect(url_for('genWeather'))
     else:
         try:
@@ -143,7 +143,7 @@ def genWeather():
                                LR = "{},{},{}".format(palette[3][0],
                                                       palette[3][1],
                                                       palette[3][2])) # lower-right color
-#-------------------------------------------create puzzle--------------------------------------------------------
+    #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/random',methods = ['GET','POST'])
 def random():
     if 'username' not in session:
@@ -190,8 +190,14 @@ def puzzles():
         #     LRC = json.loads(puzzle[5])
         #     puzzle = colors.puzzleGen(rows,cols,ULC,URC,LLC,LRC)
         #     puzzles.append(puzzle)
-        puzzles="hi"
-
+        puzzle = "test"
+        puzzles=search.getAllPuzzles()
+        i = 0;
+        while i < len(puzzles):
+            puzzles[i]=puzzles[i].split(';')
+            puzzles[i]=','.join(puzzles[i])
+            print(puzzles[i])
+            i += 1
         return render_template('puzzles.html',puzzles = puzzles)
     else:
         return redirect(url_for('home'))
@@ -222,21 +228,21 @@ def custom():
         while i<len(palette):
             colorList0.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
-        palette=colors.getpalette(4)
-        colorList1=[]
-        i=0;
+            palette=colors.getpalette(4)
+            colorList1=[]
+            i=0;
         while i<len(palette):
             colorList1.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
-        palette=colors.getpalette(4)
-        colorList2=[]
-        i=0;
+            palette=colors.getpalette(4)
+            colorList2=[]
+            i=0;
         while i<len(palette):
             colorList2.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
-        palette=colors.getpalette(4)
-        colorList3=[]
-        i=0;
+            palette=colors.getpalette(4)
+            colorList3=[]
+            i=0;
         while i<len(palette):
             colorList3.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
@@ -247,33 +253,72 @@ def custom():
 @app.route('/play', methods=["GET","POST"])
 def play():
     if 'username' in session:
-        size = request.form['size']
-        size1=size.split('x')
-        rows = int(size1[0])
-        columns = int(size1[1])
-        colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
-        colorTL = colorTL.split(",")
-        colorTL = [int(i) for i in colorTL]
-        colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
-        colorTR = colorTR.split(",")
-        colorTR = [int(i) for i in colorTR]
-        colorBL = request.form['blcolor'][4:len(request.form['blcolor'])-1]
-        colorBL = colorBL.split(",")
-        colorBL = [int(i) for i in colorBL]
-        colorBR = request.form['brcolor'][4:len(request.form['brcolor'])-1]
-        colorBR = colorBR.split(",")
-        colorBR = [int(i) for i in colorBR]
-        puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
-        dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
-        dbString = "".join(dbString.split(" "))
-        return render_template('testpuzzle.html',
-                           colors = puzzle,
-                           tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                           UL = colorTL, # upper-left color
-                           UR = colorTR, # upper-right color
-                           LL = colorBL, # lower-left color
-                           LR = colorBR, # lower-right color
-                           puzzleInfo = dbString)
+        try:
+            size = request.form['size']
+            size1=size.split('x')
+            rows = int(size1[0])
+            columns = int(size1[1])
+            colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
+            colorTL = colorTL.split(",")
+            colorTL = [int(i) for i in colorTL]
+            colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
+            colorTR = colorTR.split(",")
+            colorTR = [int(i) for i in colorTR]
+            colorBL = request.form['blcolor'][4:len(request.form['blcolor'])-1]
+            colorBL = colorBL.split(",")
+            colorBL = [int(i) for i in colorBL]
+            colorBR = request.form['brcolor'][4:len(request.form['brcolor'])-1]
+            colorBR = colorBR.split(",")
+            colorBR = [int(i) for i in colorBR]
+            puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
+            dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
+            dbString = "".join(dbString.split(" "))
+            return render_template('testpuzzle.html',
+                               colors = puzzle,
+                               tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                               UL = colorTL, # upper-left color
+                               UR = colorTR, # upper-right color
+                               LL = colorBL, # lower-left color
+                               LR = colorBR, # lower-right color
+                               puzzleInfo = dbString)
+        except:
+            value = request.form['value']
+            print(value)
+            rows = int(value[0])
+            columns = int(value[2])
+            colorTL = value[value.find("[")+1:value.find("]")]
+            colorTL = colorTL.split(",")
+            colorTL= [int(i) for i in colorTL]
+            print(colorTL)
+            value = value[value.find("]")+1:]
+            colorTR = value[value.find("[")+1:value.find("]")]
+            colorTR = colorTR.split(",")
+            colorTR= [int(i) for i in colorTR]
+            print(colorTR)
+            value = value[value.find("]")+1:]
+            colorBL = value[value.find("[")+1:value.find("]")]
+            colorBL = colorBL.split(",")
+            print(colorBL)
+            colorBL= [int(i) for i in colorBL]
+            print(colorBL)
+            value = value[value.find("]")+1:]
+            colorBR = value[value.find("[")+1:value.find("]")]
+            colorBR = colorBR.split(",")
+            colorBR= [int(i) for i in colorBR]
+            print(colorBR)
+            puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
+            dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
+            dbString = "".join(dbString.split(" "))
+            return render_template('testpuzzle.html',
+                               colors = puzzle,
+                               tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                               UL = colorTL, # upper-left color
+                               UR = colorTR, # upper-right color
+                               LL = colorBL, # lower-left color
+                               LR = colorBR, # lower-right color
+                               puzzleInfo = dbString)
+    
+            
 
 
 

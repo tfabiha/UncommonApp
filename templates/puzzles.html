@@ -9,13 +9,18 @@
 {% endblock %}
 
 {% block content %}
+<center>
 <div class="puzzles">
+  <form action="/play" method="post" id="form">
 {% for puzzle in puzzles %}
-<div class="preview-tiles">
-  <div class={{puzzle}}>
-  </div>
+<div class="preview-tiles" id={{puzzle}}>
 </div>
+<br>
 {% endfor %}
+  </form>
+  </div>
+  </center>
+<script src="./static/allpuzzle.js"> </script>
 {% endblock %}
     
   

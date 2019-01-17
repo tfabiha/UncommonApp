@@ -33,6 +33,7 @@ window.onload = function()
 
 	    for (var i = 0; i < color.length; i++)
 	    {
+		console.log(color[i])
 		color[i] = color[i].value;
 		color[i] = color[i].substring(4, color[i].length - 1);
 
