@@ -8,9 +8,22 @@
 {% block nav %}
 {% endblock %}
 
+
+
+
+
 {% block content %}
 <div class="text-center" style="padding:50px 0">
-  <div class="heading">{% block heading %}login {% endblock %}</div>
+  <div class="container">
+            <div class="col-md-12">
+                <br><br>
+            </div>
+            <img src="/static/logo.png" alt="logo" width="230">
+            <br><br>
+  <div class="heading" style="color: White">{% block heading %}LOGIN {% endblock %}</div>
+
+
+
   <div class="login">
     {% block action %}
     <form action="/auth" method = "POST">
@@ -39,7 +52,7 @@
   </form>
   <div class="register">
     {% block text %}
-    <p>new user? <a href="/reg">create new account</a></p>
+    <p style="color:white">new user? <a href="/reg" style="color:white">create new account</a></p>
     {% endblock %}
   </div>
 </div>

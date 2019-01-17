@@ -1,6 +1,8 @@
 html,
 body {
-  background: #efefef;
+  background: url(./back.png);
+  /* #efefef; */
+
   /* background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1)); */
 
   padding: 10px;
@@ -80,6 +82,10 @@ a:hover {
 ul {
     list-style-type:none;
 }
+/* 
+p {
+  color: white;
+} */
 
 .colorfill{
     border-style:solid;

@@ -7,7 +7,9 @@
 }
 
 body {
-    background: #efefef;
+    background: url(./back.png);
+
+    /* background: #efefef; */
     padding: 10px;
     font-family: 'Varela Round';
 }
