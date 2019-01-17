@@ -1,4 +1,5 @@
-//this is the preview code
+//This is the preview code. It goes along with customize so users know what their puzzles look
+//   before they save it.
 
 var color = [[], [], [], []];
 
@@ -28,7 +29,7 @@ window.onload = function()
 
 		color[i] = temp;
 	    }
-	    
+
 	    for (var i = 0; i < color.length; i++)
 	    {
 		console.log(color[i]);
@@ -49,7 +50,7 @@ window.onload = function()
 
 	    var upper_change = []
 	    var lower_change = []
-	    
+
 	    for (var i = 0; i < 3; i++)
 	    {
      		upper_change.push( (color[1][i] - color[0][i]) / (column - 1) );
@@ -78,15 +79,15 @@ window.onload = function()
 		{
 		    if (puzzle[r][c].length == 0)
     		    {
-			
+
 			for (var i = 0; i < 3; i++)
 			{
 			    puzzle[r][c].push( puzzle[0][c][i] + change[i] * r );
 			}
-			
+
 		    }
 		}
-		
+
 	    }//end for
 
 	    var table = document.createElement("table");
@@ -105,7 +106,7 @@ window.onload = function()
 		    div.style = "width: 40px; height: 40px; background-color: rgb(" + puzzle[i][j][0] + "," + puzzle[i][j][1]  + "," + puzzle[i][j][2] + "); padding: 10px; box-sizing: border-box; vertical-align: middle; text-align: center; font-size: 40px;";
 
 		    td.appendChild( div );
-		    tr.appendChild( td ); 
+		    tr.appendChild( td );
 		}
 
 		table.appendChild( tr );

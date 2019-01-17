@@ -1,3 +1,4 @@
+<!-- The user will be prompted to choose certain colors and a size. They will then create the puzzle and be leaded to a separate page to play the game.  -->
 {% extends 'base.html' %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="../static/login.css">
@@ -8,7 +9,7 @@
 {% block content %}
 <div style="padding:50px 0; width:20%; display:inline-block; float:left;">
   <div class="heading"> Customize </div>
-  
+
   <div class="loginBackground text-center">
     <form action="/play" id="custom" method="POST">
       <div id="flashedMessages">
@@ -90,10 +91,10 @@
 
     </div>
 
-    
-    
+
+
   </div>
-  
+
 
 </div>
 
@@ -104,5 +105,3 @@
 <script src="/static/customize.js"></script>
 
 {% endblock %}
-
-
