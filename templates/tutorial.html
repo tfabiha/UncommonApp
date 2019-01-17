@@ -8,12 +8,25 @@ Tutorial
 {% endblock %}
 
 {% block stuff %}
+<div class="heading">
+  Tutorial
+</div>
 <div class="flashed">
   {% set msgs = get_flashed_messages() %}
   {% for each in msgs %}
   <h5 style="color:#ff2821; text-align:center;">{{each}}</h5>
   <br>
   {% endfor %} 
+</div>
+{% endblock %}
+
+{% block instructions %}
+<div class="instructions">
+  <ul>
+    <li> 1) Click Start to begin or New to refresh</li>
+    <li> 2) Click two tiles to swap them </li>
+    <li> 3) Try to arrange the tiles to be a gradient </li>
+    <li> 4) Click check to check your answer </li>
 </div>
 {% endblock %}
 
