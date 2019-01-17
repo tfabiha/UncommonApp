@@ -207,7 +207,6 @@ var solvedstate = function(e)
        dbMoves = document.getElementById('movesNeeded')
        index = dbMoves.innerHTML.indexOf('$')
        dbMoves.innerHTML = dbMoves.innerHTML.substring(0,index) + moves + dbMoves.innerHTML.substring(index + 1)
-       console.log(dbMoves)
     }
     else
     {

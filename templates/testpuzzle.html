@@ -23,18 +23,17 @@
   <div class="modal" id="correctPop">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-	<div class="modal-header">
+	       <div class="modal-header">
           <h5 class="col-12 modal-title text-center">Correct!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-	</div>
-	<div class="modal-body">
+	       </div>
+	        <div class="modal-body">
           Moves:<br>
-          Average Moves:{{avgMoves}}
-	</div>
-	<div class="modal-footer">
-	  {% block modal %}
+	       </div>
+	        <div class="modal-footer">
+          {% block modal %}
           <form action = "/auth" method = "POST">
             <input type="submit" value = "Home" class="btn btn-secondary">
           </form>
@@ -45,8 +44,8 @@
               <input type = "hidden" name = "moves" value = "$">
             </div>
           </form>
-	  {% endblock %}
-	</div>
+	        {% endblock %}
+	       </div>
       </div>
     </div>
   </div>
@@ -69,13 +68,13 @@
       			{{colors[row][column][1]}},
       			{{colors[row][column][2]}});
       			padding: 10px;
-			box-sizing: border-box;
-			vertical-align: middle;
-			text-align: center;
-			font-size: 40px"
+            box-sizing: border-box;
+            vertical-align: middle;
+	          text-align: center;
+	          font-size: 40px"
 
-      	       class = "box row_{{row}} column_{{column}}">
-	  </div>
+  	        class = "box row_{{row}} column_{{column}}">
+	         </div>
 	</td>
 	{% endfor %}
 
