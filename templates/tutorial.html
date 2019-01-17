@@ -1,2 +1,24 @@
-{% extends testpuzzle.html %}
-{% 
+{% extends 'testpuzzle.html' %}
+
+{% block title %}
+Tutorial
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block stuff %}
+<div class="flashed">
+  {% set msgs = get_flashed_messages() %}
+  {% for each in msgs %}
+  <h5 style="color:#ff2821; text-align:center;">{{each}}</h5>
+  <br>
+  {% endfor %} 
+</div>
+{% endblock %}
+
+{% block modal %}
+<form action = "/completed" method = "POST">
+  <input type="submit" value = "Home" class="btn btn-secondary">
+</form>
+{% endblock %}

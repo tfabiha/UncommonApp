@@ -102,7 +102,7 @@ def added():
             if userList == [] : #if username isn't taken
                 update.adduser(newUsername,newPassword) #add to database
                 flash('Register Successful')
-                return redirect(url_for('home'))
+                return redirect(url_for('tutorial'))
             else: #if username is taken
                 flash('Username Taken')
                 return redirect(url_for('reg'))
@@ -346,6 +346,39 @@ def play():
             
     else:
         return redirect(url_for('home'))
+
+@app.route('/tutorial', methods=["GET","POST"])
+def tutorial():
+    rows=4
+    columns = 4
+    colorTL = [124,10,2]
+    colorTR = [255,8,0]
+    colorBL = [237,41,57]
+    colorBR = [250,128,114]
+    puzzle = colors.puzzleGen(rows,columns,colorTL,colorTR,colorBL,colorBR)
+    return render_template('tutorial.html',
+                                   colors = puzzle,
+                                   tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                                   UL = "{},{},{}".format(colorTL[0],
+                                                  colorTL[1],
+                                                  colorTL[2]), # upper-left color
+                                   UR = "{},{},{}".format(colorTR[0],
+                                                  colorTR[1],
+                                                  colorTR[2]), # upper-right color
+                                   LL = "{},{},{}".format(colorBL[0],
+                                                  colorBL[1],
+                                                  colorBL[2]), # lower-left color
+                                   LR = "{},{},{}".format(colorBR[0],
+                                                  colorBR[1],
+                                                  colorBR[2])) # lower-right color)
+
+@app.route('/completed', methods=["GET","POST"])
+def completed():
+    flash('Tutorial Complete')
+    return redirect(url_for('home'))
+    
+    
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
