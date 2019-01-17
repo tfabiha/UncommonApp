@@ -40,7 +40,7 @@ def addPuzzle(puzzle_description, moves):
     db.commit()
     db.close()
 
-addPuzzle("apuzzle1",10)
+# addPuzzle("apuzzle1",10)
 # addPuzzle("puzzle2",0)
 # addPuzzle("puzzle3",0)
 # addPuzzle("puzzle4",0)

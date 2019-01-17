@@ -190,6 +190,9 @@ def save():
     moves = request.form['moves']
     if dbString not in search.getAllPuzzles():
         update.addPuzzle(dbString,moves)
+        print("ADDED IT\n\n\n\n ")
+        print(repr(dbString))
+        # print(search.getPuzzleID(str(dbString)))
     update.addLog(session['username'],moves,search.getPuzzleID(dbString))
     return redirect(url_for('authPage'))
 

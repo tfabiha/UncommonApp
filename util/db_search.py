@@ -54,11 +54,9 @@ def getPuzzleContent(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = 'SELECT puzzle_content from puzzles WHERE puzzles_puzzleID = (?)'
+    command = 'SELECT puzzle_content from puzzles WHERE puzzles.puzzleID = (?)'
     c.execute(command, (puzzleID,))
-
     puzzle = str(c.fetchall()[0][0]) #retrieves the scores in descending order
-
     db.commit()
     db.close()
     #scores.sort(reverse=True)
@@ -70,27 +68,22 @@ def getPuzzleID(puzzle_description):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = 'SELECT puzzleID from puzzles WHERE puzzles.puzzle_content = (?)'
-<<<<<<< HEAD
-    c.execute(command, (puzzle_description,))
-=======
-    c.execute(command, (puzzle_description))
->>>>>>> 12a5fae705e8054862a945bae07d97df134bb703
+    command = "SELECT puzzleID FROM puzzles WHERE puzzles.puzzle_content ='" + str(puzzle_description) + "';" #selects score of the user
+    c.execute(command)
     puzzle = str(c.fetchall()[0][0]) #retrieves the scores in descending order
     db.commit()
     db.close()
-    #scores.sort(reverse=True)
-    #return scores[0:5]
     return (puzzle)
 
-print("GET PUZZLEID")
-print(getPuzzleID("apuzzle1"))
+# print("GET PUZZLEID")
+# print(getPuzzleID('what'))
+# print(getPuzzleID("8;8;[9,13,36];[32,67,71];[72,171,133];[194,235,30]"))
 
 def getMovesPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = "SELECT averageMoves FROM puzzles WHERE puzzles_puzzleID ='" + str(puzzleID) + "';" #selects score of the user
+    command = "SELECT averageMoves FROM puzzles WHERE puzzles.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
     c.execute(command)
     oldScore = c.fetchone()[0]
     db.commit()
