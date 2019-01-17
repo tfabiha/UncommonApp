@@ -63,6 +63,10 @@ body {
     text-align: center;
 }
 
+table{
+  border: 10px;
+}
+
 li {
     color:white;
     font-size:20px;
