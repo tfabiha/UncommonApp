@@ -28,6 +28,10 @@ def getMovesUser(username):
     db.close()
     return(oldScore)
 
+'''
+getPuzzlePlayedUser(username)
+For any given username, it will return the number of puzzles that the user has played.
+'''
 def getPuzzlePlayedUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -37,6 +41,10 @@ def getPuzzlePlayedUser(username):
     numPuzzlesDone = len(c.fetchall())
     return(numPuzzlesDone)
 
+'''
+getLikedPuzzles(username)
+For any given username, it will return the puzzles that the user has saved.
+'''
 def getLikedPuzzles(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -51,6 +59,10 @@ def getLikedPuzzles(username):
     #return ("finished getlikedpuzzles")
 #print(getLikedPuzzles("user1"))
 
+'''
+getPuzzleContent(puzzleID)
+For any given puzzleID, it will return the description associated with it.
+'''
 def getPuzzleContent(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -63,8 +75,11 @@ def getPuzzleContent(puzzleID):
     #scores.sort(reverse=True)
     #return scores[0:5]
     return (puzzle)
-#print (getPuzzle(1))
 
+'''
+getPuzzleID(puzzle_description)
+For any given puzzle description, it will return the ID associated with it.
+'''
 def getPuzzleID(puzzle_description):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -76,10 +91,10 @@ def getPuzzleID(puzzle_description):
     db.close()
     return (puzzle)
 
-# print("GET PUZZLEID")
-# print(getPuzzleID('what'))
-# print(getPuzzleID("8;8;[9,13,36];[32,67,71];[72,171,133];[194,235,30]"))
-
+'''
+getMovesPuzzle(puzzleID)
+For any given puzzle, it will return the average number of moves it takes for a given puzzle to be completed based off of logs.
+'''
 def getMovesPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -91,17 +106,10 @@ def getMovesPuzzle(puzzleID):
     db.close()
     return(oldScore)
 
-def MgetMovesPuzzle(puzzleID):
-    DB_FILE="./data/uncommonApp.db"
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    command = "SELECT moves FROM logs WHERE puzzles.puzzleID ='" + str(puzzleID) + "';" #selects score of the user
-    c.execute(command)
-    oldScore = c.fetchone()
-    db.commit()
-    db.close()
-    return(oldScore)
-
+'''
+highScores(puzzleID)
+For any given puzzle, it will return the highest scores (required the smallest number of moves to complete).
+'''
 def highScores(puzzleID):
     DB_FILE="data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -117,7 +125,10 @@ def highScores(puzzleID):
     except:
         return 0
 
-
+'''
+getPuzzlePlayedPuzzle(puzzleID)
+Returns the number of times a puzzle, with a specific ID, was played.
+'''
 def getPuzzlePlayedPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -128,23 +139,6 @@ def getPuzzlePlayedPuzzle(puzzleID):
     db.commit()
     db.close()
     return(numPuzzlesDone)
-
-'''
-highScores(puzzleID)
-For any given puzzle, it will return the top ten users and their moves
-Returns the top 10 in descending order
-'''
-
-def puzzleHighScores(puzzleID):
-    DB_FILE="./data/uncommonApp.db"
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    command = 'SELECT username, moves from logs WHERE logs.puzzleID = (?)'
-    c.execute(command, (puzzleID,))
-    scores = c.fetchall() #retrieves the scores in descending order
-    print(scores)
-    scores.sort(reverse=True)
-    return scores[0:5]
 
 '''
 password(username)
@@ -173,31 +167,3 @@ def username(username):
     c.execute(user_exists,(username,))
     userList = c.fetchall()
     return userList
-
-'''
-score(username)
-retrieves score of user
-'''
-def score(username):
-    DB_FILE="./data/uncommonApp.db"
-    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor()
-    user_exists = 'SELECT score FROM users WHERE users.username = (?);'
-    c.execute(user_exists,(username,))
-    score = c.fetchone()
-    return score
-
-'''
-question(username,question)
-returns question if user already answered that question
-None if user didn't answer
-'''
-
-def question(username,question):
-    DB_FILE="./data/uncommonApp.db"
-    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor()
-    command = 'SELECT question FROM questions WHERE questions.username = (?) AND questions.question = (?);'
-    c.execute(command, (username, question))
-    match = c.fetchone()
-    return match
