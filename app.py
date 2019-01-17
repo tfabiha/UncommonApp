@@ -191,7 +191,7 @@ def puzzles():
         #     LRC = json.loads(puzzle[5])
         #     puzzle = colors.puzzleGen(rows,cols,ULC,URC,LLC,LRC)
         #     puzzles.append(puzzle)
-        puzzle = "test"
+
         puzzles=search.getAllPuzzles()
         i = 0;
         while i < len(puzzles):
@@ -212,9 +212,9 @@ def save():
     moves = request.form['moves']
     if dbString not in search.getAllPuzzles():
         update.addPuzzle(dbString,moves)
-    puzId = search.getPuzzleID(dbString)
-    update.updateAverageMovesPuzzle(moves,puzId)
-    update.addLog(session['username'],moves,puzId)
+        puzId = search.getPuzzleID(dbString)
+        update.updateAverageMovesPuzzle(moves,puzId)
+        update.addLog(session['username'],moves,puzId)
     return redirect(url_for('authPage'))
 
 #-------------------------------------------customize--------------------------------------------------------
@@ -224,25 +224,25 @@ def custom():
         palette=colors.getpalette(4)
         print(palette[0])
         colorList0=[]
-        i=0;
+        i=0
         while i<len(palette):
             colorList0.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
-            colorList1=[]
-            i=0;
+        i=0
+        colorList1=[]
         while i<len(palette):
             colorList1.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
-            colorList2=[]
-            i=0;
+        i=0
+        colorList2=[]
         while i<len(palette):
             colorList2.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
-            colorList3=[]
-            i=0;
+        i=0
+        colorList3=[]
         while i<len(palette):
             colorList3.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
@@ -274,13 +274,13 @@ def play():
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
             return render_template('testpuzzle.html',
-                               colors = puzzle,
-                               tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                               UL = colorTL, # upper-left color
-                               UR = colorTR, # upper-right color
-                               LL = colorBL, # lower-left color
-                               LR = colorBR, # lower-right color
-                               puzzleInfo = dbString)
+                                   colors = puzzle,
+                                   tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                                   UL = ',',join(colorTL), # upper-left color
+                                   UR = ','.join(colorTR), # upper-right color
+                                   LL = ','.join(colorBL), # lower-left color
+                                   LR = ','.join(colorBR), # lower-right color
+                                   puzzleInfo = dbString)
         except:
             value = request.form['value']
             print(value)
@@ -310,14 +310,14 @@ def play():
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
             return render_template('testpuzzle.html',
-                               colors = puzzle,
-                               tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                               UL = colorTL, # upper-left color
-                               UR = colorTR, # upper-right color
-                               LL = colorBL, # lower-left color
-                               LR = colorBR, # lower-right color
-                               puzzleInfo = dbString)
-    
+                                   colors = puzzle,
+                                   tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
+                                   UL = ','.join(colorTL), # upper-left color
+                                   UR = ','.join(colorTR), # upper-right color
+                                   LL = ','.join(colorBL), # lower-left color
+                                   LR = ','.join(colorBR), # lower-right color
+                                   puzzleInfo = dbString)
+        
             
     else:
         return redirect(url_for('home'))

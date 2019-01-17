@@ -22,7 +22,6 @@ def getpalette(count):
 
         num_colors = len(palettes)
 
-
     for i in range(count):
         color = palettes[i] # ffffff
         
