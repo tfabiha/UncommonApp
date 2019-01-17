@@ -223,32 +223,43 @@ def save():
 @app.route('/customize',methods = ["GET","POST"])
 def custom():
     if 'username' in session:
-        palette=colors.getpalette(4)
-        print(palette[0])
+        #palette=colors.getpalette(4)
+        #print(palette[0])
+        colorList = [[],[],[],[]]
+
+        for i in range(4):
+            palette = colors.getpalette(4);
+
+            for j in range(4):
+                colorList[i].append('rgb('+str(palette[j][0]) +","+str(palette[j][1])+"," +str(palette[j][2]) +')')
+                
+        
+        """
         colorList0=[]
         i=0
-        while i<len(palette):
+        while i<4:
             colorList0.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
         i=0
         colorList1=[]
-        while i<len(palette):
+        while i<4:
             colorList1.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
         i=0
         colorList2=[]
-        while i<len(palette):
+        while i<4:
             colorList2.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
             palette=colors.getpalette(4)
         i=0
         colorList3=[]
-        while i<len(palette):
+        while i<4:
             colorList3.append('rgb('+str(palette[i][0]) +","+str(palette[i][1])+"," +str(palette[i][2]) +')')
             i = i + 1
-        return render_template('customize.html', colors0=colorList0, colors1=colorList1, colors2=colorList2, colors3=colorList3)
+"""
+        return render_template('customize.html', colors0=colorList[0], colors1=colorList[1], colors2=colorList[2], colors3=colorList[3])
     else:
         return redirect(url_for('home'))
 

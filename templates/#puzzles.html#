@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="../static/UncommonApp.css">
+<meta charset = 'utf-8'/>
+<title>
+  Puzzles
+</title>
+{% endblock %}
+
+{% block content %}
+<center>
+x
+  <form action="/play" method="post" id="form">
+{% for puzzle in puzzles %}
+<div class="preview-tiles" id={{puzzle}}>
+</div>
+<br>
+{% endfor %}
+  </form>
+  </center>
+<script src="./static/allpuzzle.js"> </script>
+{% endblock %}
+    
+  

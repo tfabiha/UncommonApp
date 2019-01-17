@@ -14,7 +14,15 @@ window.onload = function()
 				preview();
 			    }, false);
     console.log(button);
-    
+
+    var refresh = document.getElementById("randpal");
+    console.log("refresh")
+    refresh.addEventListener("click", function()
+                             {
+				 reloaded();
+				 //location.reload();                          
+				 //console.log("reloaded");                    
+                             })    
 
     var preview = function(e)
     {
@@ -194,4 +202,11 @@ window.onload = function()
 	
 	return checked;
     }
+}
+
+
+var reloaded = function(e)
+{
+    location.reload();
+    console.log("reloaded");
 }
