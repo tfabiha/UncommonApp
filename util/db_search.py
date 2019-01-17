@@ -1,6 +1,17 @@
 import sqlite3 #imports sqlite
 
-
+def getAllPuzzles():
+    DB_FILE="./data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = "SELECT puzzle_content FROM puzzles;"
+    c.execute(command)
+    tList = c.fetchone()
+    print (tList)
+    db.commit()
+    db.close()
+    return("done")
+getAllPuzzles()
 def getMovesUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -51,6 +62,18 @@ def getPuzzle(puzzleID):
     return (puzzle)
 #print (getPuzzle(1))
 
+def getPuzzle(puzzle_description):
+    DB_FILE="./data/uncommonApp.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    command = 'SELECT puzzleID from puzzles WHERE puzzles.content = (?)'
+    c.execute(command, (puzzle_description,))
+    puzzle = str(c.fetchall()[0][0]) #retrieves the scores in descending order
+    db.commit()
+    db.close()
+    #scores.sort(reverse=True)
+    #return scores[0:5]
+    return (puzzle)
 
 def getMovesPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"
