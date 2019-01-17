@@ -30,7 +30,7 @@ def getpalette(count):
         response["g"] = int( color[2:4] , 16 )
         response["b"] = int( color[4:6] , 16 )
 
-        print(response)
+        #print(response)
         
         '''
         URL_COLOR = "http://www.thecolorapi.com/id?hex={}&format=json".format(color)
