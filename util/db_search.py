@@ -1,5 +1,9 @@
 import sqlite3 #imports sqlite
 
+'''
+getAllPuzzles()
+Returns all of the puzzles in the database.
+'''
 def getAllPuzzles():
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -16,7 +20,10 @@ def getAllPuzzles():
 
 print(getAllPuzzles())
 
-
+'''
+getMovesUser(username)
+For any given username, it will return the number of moves that the user takes to complete a puzzle.
+'''
 def getMovesUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)

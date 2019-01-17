@@ -1,3 +1,7 @@
+# UncommonApp
+# Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+# P#02: The End
+
 from flask import Flask,render_template,request,session,url_for,redirect,flash
 
 from os import urandom
@@ -148,6 +152,9 @@ def genWeather():
     #-------------------------------------------create puzzle--------------------------------------------------------
 @app.route('/random',methods = ['GET','POST'])
 def random():
+    '''
+    Creates a random puzzle for users to play.
+    '''
     if 'username' not in session:
         return redirect(url_for('home'))
     rows = 8
