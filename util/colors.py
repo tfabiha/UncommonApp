@@ -1,3 +1,7 @@
+# UncommonApp
+# Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+# P#02: The End
+
 import random
 import json
 from urllib import request, parse

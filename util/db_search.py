@@ -1,3 +1,6 @@
+# UncommonApp
+# Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+# P#02: The End
 import sqlite3 #imports sqlite
 
 '''

@@ -1,4 +1,7 @@
-''' this file stores the updating database code'''
+# UncommonApp
+# Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+# P#02: The End
+# ''' this file stores the updating database code'''
 
 import sqlite3
 from util import db_search as search

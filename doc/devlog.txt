@@ -10,8 +10,8 @@ WeLoveHue
 "WeLoveHue" is a web-based recreation of the ios/android game
 "I Love Hue". Players are given the chance to solve puzzles
 involving arranging colored blocks to complete a color gradient.
-They have the abilities to create their own puzzles, play
-the puzzles of other players, and compete for high scores.
+They have the abilities to create their own puzzles and play
+the puzzles of other players.
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
@@ -156,7 +156,24 @@ fabihaT -- 2019-01-16 15:33
 - fixed bugs in randomize
 - fixed bugs in check
 ==============================================================
+michelleT -- 2019-01-16 19:04
+--------------------------------------------------------------
+- fixed getallpuzzles and puzzleid
+==============================================================
+dennisC -- 2019-01-17 10:10
+--------------------------------------------------------------
+- fixed randomized and weather
+==============================================================
 fabihaT -- 2019-01-17 15:34
 --------------------------------------------------------------
 - added refresh buttons
 - reformatted code
+==============================================================
+addisonH -- 2019-01-17 15:05
+--------------------------------------------------------------
+- added tutorial and fixed check
+==============================================================
+michelleT -- 2019-01-17 18:42
+--------------------------------------------------------------
+- docstrings and heading
+==============================================================

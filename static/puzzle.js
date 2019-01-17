@@ -1,3 +1,8 @@
+// <!--
+// # UncommonApp
+// # Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+// # P#02: The End 
+// -->
 // obtains list of all tiles that are in play
 var sq = document.getElementsByClassName("box");
 

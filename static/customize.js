@@ -1,4 +1,8 @@
-
+// <!--
+// # UncommonApp
+// # Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
+// # P#02: The End
+// -->
 var color = [[], [], [], []];
 
 window.onload = function()
