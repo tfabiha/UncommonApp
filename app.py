@@ -275,6 +275,8 @@ def play():
             puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
+            print('-------colorTL--------')
+            print("{},{},{}".format(colorTL[0],colorTL[1],colorTL[2]))
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
