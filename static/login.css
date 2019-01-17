@@ -1,7 +1,7 @@
 html,
 body {
-  /* background: #efefef; */
-  background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
+  background: #efefef;
+  /* background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1)); */
 
   padding: 10px;
   font-family: 'Varela Round';
