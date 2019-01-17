@@ -286,12 +286,12 @@ def play():
                                    UR = "{},{},{}".format(colorTR[0],
                                                   colorTR[1],
                                                   colorTR[2]), # upper-right color
-                                   LL = "{},{},{}".format(colorTR[0],
-                                                  colorTR[1],
-                                                  colorTR[2]), # lower-left color
-                                   LR = "{},{},{}".format(colorTR[0],
-                                                  colorTR[1],
-                                                  colorTR[2]), # lower-right color 
+                                   LL = "{},{},{}".format(colorBL[0],
+                                                  colorBL[1],
+                                                  colorBL[2]), # lower-left color
+                                   LR = "{},{},{}".format(colorBR[0],
+                                                  colorBR[1],
+                                                  colorBR[2]), # lower-right color 
                                    puzzleInfo = dbString)
         except:
             value = request.form['value']
@@ -324,12 +324,12 @@ def play():
                                    UR = "{},{},{}".format(colorTR[0],
                                                   colorTR[1],
                                                   colorTR[2]), # upper-right color
-                                   LL = "{},{},{}".format(colorTR[0],
-                                                  colorTR[1],
-                                                  colorTR[2]), # lower-left color
-                                   LR = "{},{},{}".format(colorTR[0],
-                                                  colorTR[1],
-                                                  colorTR[2]), # lower-right color
+                                   LL = "{},{},{}".format(colorBL[0],
+                                                  colorBL[1],
+                                                  colorBL[2]), # lower-left color
+                                   LR = "{},{},{}".format(colorBR[0],
+                                                  colorBR[1],
+                                                  colorBR[2]), # lower-right color
                                    puzzleInfo = dbString)
         
             
