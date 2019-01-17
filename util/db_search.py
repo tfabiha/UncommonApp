@@ -70,7 +70,7 @@ def getPuzzleID(puzzle_description):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = 'SELECT puzzleID from puzzles WHERE puzzle.puzzle_content = (?)'
+    command = 'SELECT puzzleID from puzzles WHERE puzzles.puzzle_content = (?)'
     c.execute(command, (puzzle_description,))
     puzzle = str(c.fetchall()[0][0]) #retrieves the scores in descending order
     db.commit()
@@ -78,6 +78,9 @@ def getPuzzleID(puzzle_description):
     #scores.sort(reverse=True)
     #return scores[0:5]
     return (puzzle)
+
+print("GET PUZZLEID")
+print(getPuzzleID("apuzzle1"))
 
 def getMovesPuzzle(puzzleID):
     DB_FILE="./data/uncommonApp.db"
