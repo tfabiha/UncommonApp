@@ -253,7 +253,6 @@ def custom():
 @app.route('/play', methods=["GET","POST"])
 def play():
     if 'username' in session:
-<<<<<<< HEAD
         try:
             size = request.form['size']
             size1=size.split('x')
@@ -320,48 +319,6 @@ def play():
                                puzzleInfo = dbString)
     
             
-=======
-        size = request.form['size']
-        size1=size.split('x')
-        rows = int(size1[0])
-        columns = int(size1[1])
-        colorTL = request.form['tlcolor'][4:len(request.form['tlcolor'])-1]
-        colorTL = colorTL.split(",")
-        colorTL = [int(i) for i in colorTL]
-        print(colorTL)
-        colorTR = request.form['trcolor'][4:len(request.form['trcolor'])-1]
-        colorTR = colorTR.split(",")
-        colorTR = [int(i) for i in colorTR]
-        colorBL = request.form['blcolor'][4:len(request.form['blcolor'])-1]
-        colorBL = colorBL.split(",")
-        colorBL = [int(i) for i in colorBL]
-        colorBR = request.form['brcolor'][4:len(request.form['brcolor'])-1]
-        colorBR = colorBR.split(",")
-        colorBR = [int(i) for i in colorBR]
-        puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
-        dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
-        dbString = "".join(dbString.split(" "))
-        print(dbString)
-        return render_template('testpuzzle.html',
-                           colors = puzzle,
-                           tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                           UL = "{},{},{}".format(colorTL[0],
-                                                  colorTL[1],
-                                                  colorTL[2]),# upper-left color
-                           UR  ="{},{},{}".format(colorTR[0],
-                                                  colorTR[1],
-                                                  colorTR[2]), # upper-right color
-                           LL = "{},{},{}".format(colorBL[0],
-                                                  colorBL[1],
-                                                  colorBL[2]), # lower-left color
-                           LR = "{},{},{}".format(colorBR[0],
-                                                  colorBR[1],
-                                                  colorBR[2]), # lower-right color
-                           puzzleInfo = dbString)
->>>>>>> 9ba7669c0eb6d56e69b32be207f2ca2587b538fd
-
-
-
     else:
         return redirect(url_for('home'))
 
