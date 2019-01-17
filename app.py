@@ -273,13 +273,14 @@ def play():
             puzzle = colors.puzzleGen(rows, columns, colorTL, colorTR,colorBL, colorBR)
             dbString = "%s;%s;%s;%s;%s;%s" % (rows,columns, colorTL, colorTR, colorBL, colorBR)
             dbString = "".join(dbString.split(" "))
+            print(puzzle)
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                                   UL = ','.join(colorTL), # upper-left color
-                                   UR = ','.join(colorTR), # upper-right color
-                                   LL = ','.join(colorBL), # lower-left color
-                                   LR = ','.join(colorBR), # lower-right color
+                                   UL = ','.join(str(colorTL)), # upper-left color
+                                   UR = ','.join(str(colorTR)), # upper-right color
+                                   LL = ','.join(str(colorBL)), # lower-left color
+                                   LR = ','.join(str(colorBR)), # lower-right color
                                    puzzleInfo = dbString)
         except:
             value = request.form['value']
@@ -312,10 +313,10 @@ def play():
             return render_template('testpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
-                                   UL = ','.join(colorTL), # upper-left color
-                                   UR = ','.join(colorTR), # upper-right color
-                                   LL = ','.join(colorBL), # lower-left color
-                                   LR = ','.join(colorBR), # lower-right color
+                                   UL = ','.join(str(colorTL)), # upper-left color
+                                   UR = ','.join(str(colorTR)), # upper-right color
+                                   LL = ','.join(str(colorBL)), # lower-left color
+                                   LR = ','.join(str(colorBR)), # lower-right color
                                    puzzleInfo = dbString)
         
             
