@@ -28,8 +28,9 @@ def getWeather():
     '''
     location = list(getLocation())
     try:
-        with open('keys.json') as f:
+        with open('keys/keys.json') as f:
             data = json.load(f)
+            print("works")
     except:
         pass
     if location[2] == 'US':

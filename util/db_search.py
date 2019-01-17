@@ -6,12 +6,16 @@ def getAllPuzzles():
     c = db.cursor()
     command = "SELECT puzzle_content FROM puzzles;"
     c.execute(command)
-    tList = c.fetchone()
-    print (tList)
+    tList = c.fetchall()
+    fList = []
+    for element in tList:
+        fList.append(str(element[0]))
     db.commit()
     db.close()
-    return("done")
-getAllPuzzles()
+    return(fList)
+
+print(getAllPuzzles())
+
 def getMovesUser(username):
     DB_FILE="./data/uncommonApp.db"
     db = sqlite3.connect(DB_FILE)
@@ -111,9 +115,8 @@ def puzzleHighScores(puzzleID):
     c.execute(command, (puzzleID,))
     scores = c.fetchall() #retrieves the scores in descending order
     print(scores)
-    #scores.sort(reverse=True)
-    #return scores[0:5]
-    return "hi"
+    scores.sort(reverse=True)
+    return scores[0:5]
 
 '''
 password(username)

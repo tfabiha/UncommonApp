@@ -40,7 +40,11 @@ def addPuzzle(puzzle_description, moves):
     db.commit()
     db.close()
 
-#addPuzzle("puzzle1")
+# addPuzzle("puzzle1",0)
+# addPuzzle("puzzle2",0)
+# addPuzzle("puzzle3",0)
+# addPuzzle("puzzle4",0)
+# print("hi")
 '''
 addLog(username,moves,puzzleID)
 params:username,moves,puzzleID

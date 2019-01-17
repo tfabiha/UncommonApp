@@ -15,7 +15,7 @@ IP Identifier | http://ip-api.com | no key needed and unlimited quotas! | N/A
 Weather API | https://www.airvisual.com/air-pollution-data-api | key needed but the quota is 10,000 per month! | Create an account and on the dashboard where it says API key, follow those instructions.
 
 **Where to place your API**
-1) Please put your API key in a file named ```keys.json``` with a key value of weather.
+1) Please put your API key in a file named ```keys.json``` with a key value of weather inside the directory ```keys```.
 For example:
 ```
     {
