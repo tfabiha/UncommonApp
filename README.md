@@ -5,8 +5,14 @@ P #02: The End
 ## Project Description
 Using RESTful APIs we will mimic the game “i love hue.” People will be given a color scheme that broken is into pieces then randomized. Certain pieces will be locked, which will serve as a point of reference for people to complete the puzzle. They will then have to reorganize the pieces until the original color scheme is achieved. Creating an account will also allow users to create their own puzzles with customizations such as the size of the puzzle and the color scheme. Based off of a player’s location and weather, players will be able to play limited edition puzzles. There will be puzzles that we (the devs) created that are open to everyone. For all puzzles, there will be a tracker to count how many moves are made per puzzle.
 
+## Roster with Roles
+- Dennis Chen: Worked with Javascript with randomize, create, and check the solved states of the puzzle. Also implemented swap.
+- T Fabiha: Project Manager!
+- Addison Huang: Worked with CSS, Javascript, and app.py to create the linkage of routes. Completed tutorial and registration.
+- Michelle Tang: Worked with the database, app.py, and CSS to allow puzzles to be stored and generated and make our website more user-friendly.
+
 ## Video Demo
-Go to this amazing [page](https://youtu.be/k4qt-k-dr8M) and enjoy!
+[OUR VIDEO DEMO HERE](https://youtu.be/k4qt-k-dr8M) . Enjoy!
 
 ## APIs
 **Here are the APIs that we use & how to procure keys:**
