@@ -3,6 +3,7 @@
 // # Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
 // # P#02: The End
 // -->
+// Handles puzzles created by the user.
 var color = [[], [], [], []];
 
 window.onload = function()

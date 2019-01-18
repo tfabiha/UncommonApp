@@ -1,7 +1,7 @@
 // <!--
 // # UncommonApp
 // # Dennis Chen, T Fabiha, Addison Huang, Michelle Tang
-// # P#02: The End 
+// # P#02: The End
 // -->
 // obtains list of all tiles that are in play
 var sq = document.getElementsByClassName("box");
@@ -50,7 +50,7 @@ for (var i = 0; i < sq.length; i++)
 };
 
 var resp = document.getElementsByClassName("response")[0];
-
+// allows users to check their solution with the right answer
 var addBtn= function(e) {
     var buttons = document.getElementById('button');
     var newB = document.getElementById('check');
@@ -165,7 +165,7 @@ var setup = function(e)
 }
 
 setup();
-
+// Checks for SOLVED state.
 var solvedstate = function(e)
 {
     var solved = true;
@@ -256,7 +256,7 @@ var swap = function(e)
     }
 
 }
-
+// Creates a random color and then iterates it until the row is complete
 var randint = function(e)
 {
     return Math.floor( Math.random() * e )
