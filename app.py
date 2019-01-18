@@ -297,7 +297,7 @@ def play():
             dbString = "".join(dbString.split(" "))
             print('-------colorTL--------')
             print("{},{},{}".format(colorTL[0],colorTL[1],colorTL[2]))
-            return render_template('testpuzzle.html',
+            return render_template('playpuzzle.html',
                                    colors = puzzle,
                                    tile_size = "{}x{}".format(rows, columns), # size "widthxheigth"
                                    UL = "{},{},{}".format(colorTL[0],
