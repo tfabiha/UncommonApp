@@ -215,8 +215,8 @@ var solvedstate = function(e)
        resp.innerHTML = ""
        numMoves = document.getElementsByClassName('modal-body')[0]
        index = numMoves.innerHTML.indexOf('Moves:')
-			 console.log(index)
-       numMoves.innerHTML = numMoves.innerHTML.substring(index,index + 6) + " " + moves + numMoves.innerHTML.substring(index + 6)
+	console.log(index)
+       numMoves.innerHTML = "Moves: " + moves
        dbMoves = document.getElementById('movesNeeded')
        index = dbMoves.innerHTML.indexOf('$')
        dbMoves.innerHTML = dbMoves.innerHTML.substring(0,index) + moves + dbMoves.innerHTML.substring(index + 1)
